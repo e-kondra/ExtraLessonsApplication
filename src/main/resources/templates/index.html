@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="~{fragments/headers.html::head}"></head>
+  <body>
+  <header th:replace="~{fragments/headers.html::unregistered_user_navbar}"></header>
+    <!-- Fixed navbar -->
+
+    <!-- Header -->
+    <header id="head">
+      <div class="container">
+
+        <div class="fluid_container">
+          <div class="camera_wrap camera_emboss pattern_1" id="camera_wrap_4">
+            <div
+              th:data-thumb="@{images/slides/img4.jpg}"
+              th:data-src="@{images/slides/img4.jpg}"
+            ></div>
+            <div
+              th:data-thumb="@{images/slides/img6.jpg}"
+              th:data-src="@{images/slides/img6.jpg}"
+            ></div>
+            <div
+              th:data-thumb="@{images/slides/img3.jpg}"
+              th:data-src="@{images/slides/img3.jpg}"
+            ></div>
+            <div
+              th:data-thumb="@{images/slides/img5.jpg}"
+              th:data-src="@{images/slides/img5.jpg}"
+            ></div>
+          </div>
+        </div>
+        <!-- .fluid_container -->
+      </div>
+    </header>
+    <!-- /Header -->
+
+    <section class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="title-box clearfix">
+            <h2 class="title-box_primary">About Us</h2>
+          </div>
+          <p>
+            <span
+              >Perspiciatis unde omnis iste natus error sit voluptatem. Cum
+              sociis natoque penatibus et magnis dis parturient montes ascetur
+              ridiculus musull dui.</span
+            >
+          </p>
+          <p>
+            Lorem ipsumulum aenean noummy endrerit mauris. Cum sociis natoque
+            penatibus et magnis dis parturient montes ascetur ridiculus mus.
+            Null dui. Fusce feugiat malesuada odio.
+          </p>
+          <p>
+            Lorem ipsumulum aenean noummy endrerit mauris. Cum sociis natoque
+            penatibus et magnis dis parturient montes ascetur ridiculus mus.
+            Null dui. Fusce feugiat malesuada odio.
+          </p>
+        </div>
+
+      </div>
+    </section>
+  <footer th:replace="fragments/footers.html::footer"></footer>
+  <div th:replace="fragments/scripts::scripts"></div>
+</body>
+</html>
