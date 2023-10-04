@@ -1,7 +1,7 @@
 package com.extralessonsapplication.user;
 
 public enum UserRole {
-    MODERATOR,
+    PARENT,
     TEACHER,
-    PARENT
+    MODERATOR
 }

@@ -16,7 +16,7 @@ body {
 /*General*/
 h1, h2, h3, h4, h5, h6 {
 	font-weight: normal;
-	font-family: font-family: 'Raleway', sans-serif;
+	font-family: font-family, 'Raleway', sans-serif;
 }
 h1, .h1, h2, .h2, h3, .h3 {
 	margin-top: 30px;
@@ -40,7 +40,7 @@ a:hover, a:focus{
 .navbar-nav>li>a {
 	padding-top: 12px;
 	padding-bottom: 12px;
-	font-family: font-family: 'Raleway', sans-serif;
+	/*font-family: font-family: "Raleway", sans-serif;*/
 	font-weight: 400 !important;
 }
 blockquote {
@@ -156,7 +156,10 @@ background: rgba(255, 255, 255, 0.14);}
 .section-title {
 	margin-bottom: 20px;
 }
-.features{background: #29AAE2;padding: 0 0 38px;/* border-top: 2px solid #fff; */
+.features{
+background: #29AAE2;
+padding: 0 0 38px;
+/* border-top: 2px solid #fff; */
 }
 .navbar-inverse .navbar-brand{
 margin-top:0px;
@@ -321,7 +324,7 @@ ul, .list.custom-list ul {
 .thumbnail .caption:hover {
 }
 .thumbnail .caption a {
-	font: 20px;
+	font-size: 20px;
 }
 .slideUp {
 	top: -100px;
@@ -597,6 +600,7 @@ footer {
 	color: #3d84e6;
 }
 /* carousel */
+/*noinspection ALL*/
 #quote-carousel {
 	padding: 0 10px 30px 10px;
 	margin-top: 30px 0px 0px;
