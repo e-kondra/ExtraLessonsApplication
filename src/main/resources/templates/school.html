@@ -1,10 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<head th:replace="~{fragments/headers.html::head}"></head>
 <body>
-
+<header th:replace="~{fragments/headers.html::moderator_user_navbar}"></header>
+<header id="head" class="secondary">
+    <div class="container">
+        <h1>School</h1>
+        <p>Create New School</p>
+    </div>
+</header>
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <h3 class="section-title">Please enter data</h3>
+            <form class="form-light mt-20" role="form" action="/school_create" method="post">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input name="name" type="text" class="form-control" placeholder="name">
+                </div>
+                <button type="submit" class="btn btn-two">Submit</button><p><br/></p>
+            </form>
+        </div>
+    </div>
+</div>
+<div th:replace="fragments/scripts::scripts"></div>
 </body>
 </html>

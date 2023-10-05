@@ -1,7 +1,5 @@
 package com.extralessonsapplication.student;
 
-import com.extralessonsapplication.user.UserEntity;
-import com.extralessonsapplication.user.UserRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

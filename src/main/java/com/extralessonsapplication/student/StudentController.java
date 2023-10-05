@@ -1,8 +1,5 @@
 package com.extralessonsapplication.student;
 
-import com.extralessonsapplication.user.UserEntity;
-import com.extralessonsapplication.user.UserRole;
-import com.extralessonsapplication.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

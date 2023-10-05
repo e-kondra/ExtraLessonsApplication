@@ -15,5 +15,5 @@ public class SchoolEntity {
     @Id @GeneratedValue
     private Long id;
     private String name;
-    private boolean isActive;
+    private Boolean isActive;
 }
