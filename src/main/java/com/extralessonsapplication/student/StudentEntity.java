@@ -26,5 +26,5 @@ public class StudentEntity {
     private SchoolEntity school;
     private Timestamp contractBegin;
     private Timestamp contractEnd;
-    boolean isActive;
+    private Boolean isActive;
 }
