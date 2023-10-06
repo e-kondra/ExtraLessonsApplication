@@ -1,4 +1,10 @@
 package com.extralessonsapplication.lesson;
 
-public class LessonRepository {
+
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface LessonRepository extends CrudRepository<LessonEntity, Long> {
 }
+
