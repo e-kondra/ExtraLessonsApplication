@@ -2,16 +2,15 @@ package com.extralessonsapplication.user;
 
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.CookieValue;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Arrays;
 import java.util.Map;
+
 
 @Controller
 public class UserController {
@@ -38,7 +37,7 @@ public class UserController {
                 case "MODERATOR" -> {return "redirect:/moderator?status=LOGIN_SUCCESS";}
                 case "PARENT" -> {return "redirect:/lessonsList?status=LOGIN_SUCCESS";}
                 case "TEACHER" -> {return "redirect:/lessonsList?status=LOGIN_SUCCESS";}
-            };
+            }
             return "redirect:/?status=LOGIN_FAILED";
         } catch(Exception e){
             return "redirect:/login?status=LOGIN_FAILED&error=" + e.getMessage();
@@ -46,7 +45,7 @@ public class UserController {
     }
 
     @GetMapping("/moderator")
-    public String displayModeratorMainPage(Model model) {
+    public String displayModeratorMainPage() {
         return "/moderatorMainPage";
     }
 
@@ -87,4 +86,37 @@ public class UserController {
         response.addCookie(cookie);
         return "redirect:/?status=LOGOUT_SUCCESSFUL";
     }
+
+    @GetMapping("/user_update/{id}")
+    public String displayUserUpdatePage(@PathVariable() Long id, Model model) {
+        System.out.println("id=" + id);
+        try {
+            UserEntity user = this.userService.findUserById(id);
+            model.addAttribute("userItem", user);
+            model.addAttribute("student", user.getStudent());
+            model.addAttribute("roles", UserRole.values());
+            return "user_update";
+        } catch (Exception exception) {
+            return "redirect:/usersList?message=USER_UPDATE_FAILED&error=" + exception.getMessage();
+        }
+    }
+
+    @PostMapping("/user_update/{id}")
+    public String handleUserUpdate(@PathVariable() Long id, UserEntity user){
+        try {
+            this.userService.findUserById(id);
+            user.setId(id);
+            this.userService.updateUser(user);
+            return "redirect:/usersList?message=USER_UPDATE_SUCCESS";
+        } catch (Exception exception){
+            return "redirect:/usersList?message=USER_UPDATE_FAILED&error=" + exception.getMessage();
+        }
+    }
+
+    @GetMapping("/teacher/some")
+    public String displayTeacherPage() {
+        return "teacherMain";
+    }
+
+
 }

@@ -24,4 +24,11 @@ public class SchoolService {
     }
 
 
+    public SchoolEntity getSchoolById(Long id) throws Exception {
+        return this.schoolRepository.findById(id).orElseThrow();
+    }
+
+    public void updateSchool(SchoolEntity school) throws Exception{
+        this.schoolRepository.save(school);
+    }
 }

@@ -23,14 +23,14 @@
                 <tbody>
                 <tr th:each="school: ${schools}">
                     <td th:text="${school.getName()}"></td>
-                    <td th:text="${school.getIsActive().toString()}"></td>
-                    <td><a href="">Update</a></td>
+                    <td th:text="${school.getIsActive()}"></td>
+                    <td><a th:href="'/school_update/' + ${school.getId()}">Update</a></td>
                 </tr>
                 </tbody>
             </table>
         </div>
     </div>
 </div>
-<div th:replace="fragments/scripts::scripts"></div>
+<div th:replace="~{fragments/scripts::scripts}"></div>
 </body>
 </html>

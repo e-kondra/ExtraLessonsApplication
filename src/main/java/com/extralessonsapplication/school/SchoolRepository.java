@@ -8,5 +8,7 @@ import java.util.ArrayList;
 
 @Repository
 public interface SchoolRepository extends CrudRepository<SchoolEntity, Long> {
+
     ArrayList<SchoolEntity> findAllByIsActiveIsTrue();
+
 }

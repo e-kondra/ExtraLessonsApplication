@@ -29,14 +29,14 @@
                     <td th:text="${user.getName() + ' ' + user.getLastname()}"></td>
                     <td th:text="${user.getRole().toString()}"></td>
                     <td th:text="${user.getStudent()}"></td>
-                    <td th:text="${user.getIsActive().toString()}"></td>
-                    <td><a href="">Update</a></td>  <!--"/user_update/ + ${user.getId()}"-->
+                    <td th:text="${user.getIsActive()}? 'true' : 'false'"></td>
+                    <td><a th:href="'/user_update/'+${user.getId()}">Update</a></td>
                 </tr>
                 </tbody>
             </table>
         </div>
     </div>
 </div>
-<div th:replace="fragments/scripts::scripts"></div>
+<div th:replace="~{fragments/scripts::scripts}"></div>
 </body>
 </html>
