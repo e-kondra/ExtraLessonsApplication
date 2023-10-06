@@ -21,18 +21,18 @@
             th:href="@{/css/bootstrap-theme.css}"
             media="screen"
     />
-    <link rel="stylesheet" th:href="@{css/style.css}" />
+    <link rel="stylesheet" th:href="@{/css/style.css}" />
     <link
             rel="stylesheet"
             id="camera-css"
-            th:href="@{css/camera.css}"
+            th:href="@{/css/camera.css}"
             type="text/css"
             media="all"
     />
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
-    <script th:src="@{js/html5shiv.js}"></script>
-    <script th:src="@{js/respond.min.js}"></script>
+    <script th:src="@{/js/html5shiv.js}"></script>
+    <script th:src="@{/js/respond.min.js}"></script>
     <![endif]-->
 </head>
 
@@ -54,13 +54,13 @@
             </button>
             <a class="navbar-brand">
                 <img
-                        th:src="@{images/logo1.png}"
+                        th:src="@{/images/logo1.png}"
                         alt="Techro HTML5 template"
                         style="width: 80px;"
                 /></a>
             <a class="navbar-brand">
                 <img
-                        th:src="@{images/Roblo3.png}"
+                        th:src="@{/images/Roblo3.png}"
                         alt="Techro HTML5 template"
                         style="width: 300px;"
                 /></a>
@@ -96,13 +96,13 @@
                 </button>
                 <a class="navbar-brand">
                     <img
-                            th:src="@{images/logo1.png}"
+                            th:src="@{/images/logo1.png}"
                             alt="Techro HTML5 template"
                             style="width: 80px;"
                     /></a>
                 <a class="navbar-brand">
                     <img
-                            th:src="@{images/Roblo3.png}"
+                            th:src="@{/images/Roblo3.png}"
                             alt="Techro HTML5 template"
                             style="width: 300px;"
                     /></a>
@@ -121,18 +121,23 @@
                         <a class="dropdown-toggle" data-toggle="dropdown">Students <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="/studentsList">All Students</a></li>
-                            <li><a href="/student_create">New Student</a></li>
+                            <li><a href="/student">New Student</a></li>
                         </ul>
                     </li>
                     <li class="c4 dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown">Schools <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a href="/schoolsList">All Schools</a></li>
-                            <li><a href="/school_create">New School</a></li>
+                            <li><a href="/school">New School</a></li>
                         </ul>
                     </li>
-
-                    <li class="c5"><a href="/LessonsList">Lessons</a></li>
+                    <li class="c5 dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown">Lessons <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/lessonsList">All Schools</a></li>
+                            <li><a href="/lesson">New School</a></li>
+                        </ul>
+                    </li>
                     <li class="c6"><a href="/logout">Logout</a></li>
                 </ul>
             </div>
