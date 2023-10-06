@@ -11,11 +11,11 @@ public class StudentService {
     public StudentService(StudentRepository studentRepository){
         this.studentRepository=studentRepository;
     }
-    public ArrayList<StudentEntity> getAllUsers() {return (ArrayList<StudentEntity>) this.studentRepository.findAll();
-    }
 
     public void createStudent(StudentEntity studentEntity) throws Exception{
         this.studentRepository.save(studentEntity);
+    }
+    public ArrayList<StudentEntity> getAllStudents() {return (ArrayList<StudentEntity>) this.studentRepository.findAll();
     }
 
 }

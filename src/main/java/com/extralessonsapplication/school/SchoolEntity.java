@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 import java.util.List;
 
 @Data
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -20,7 +21,9 @@ public class SchoolEntity {
     private Long id;
     private String name;
     private Boolean isActive;
-    @OneToMany (mappedBy = "school")
-    private List<StudentEntity> students;
 
+    @Override
+    public String toString() {
+        return  name ;
+    }
 }

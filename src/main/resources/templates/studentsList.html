@@ -26,11 +26,11 @@
                 </thead>
                 <tbody>
                 <tr th:each="student: ${students}">
-                    <td th:text="${student.getName() + ' ' + student.getLastname()}"></td>
+                    <td th:text="${student.getName() + ' ' + student.getLastName()}"></td>
                     <td th:text="${student.getPersonalCode}"></td>
-                    <td th:text="${student.getSchool}"></td>
-                    <td th:text="${student.getContractBegin.toString()}"></td>
-                    <td th:text="${student.getContractEnd.toString()}"></td>
+                    <td th:text="${student.getSchool()}"></td>
+                    <td th:text="${student.getContractBegin}"></td>
+                    <td th:text="${student.getContractEnd}"></td>
                     <td th:text="${student.getIsActive().toString()}"></td>
                     <td><a href="">Update</a></td>
                 </tr>
@@ -39,6 +39,6 @@
         </div>
     </div>
 </div>
-<div th:replace="fragments/scripts::scripts"></div>
+<div th:replace="~{fragments/scripts::scripts}"></div>
 </body>
 </html>

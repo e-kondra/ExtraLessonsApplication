@@ -2,13 +2,14 @@ package com.extralessonsapplication.student;
 
 import com.extralessonsapplication.school.SchoolEntity;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
-import java.sql.Timestamp;
+import java.sql.Date;
 
-@Data
+
+@Setter
+@Getter
+@ToString
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -20,9 +21,9 @@ public class StudentEntity {
     private String lastName;
     private String personalCode;
     @ManyToOne
-    @JoinColumn (name = "schoolId")
     private SchoolEntity school;
-    private Timestamp contractBegin;
-    private Timestamp contractEnd;
+    private Date contractBegin;
+    private Date contractEnd;
     private Boolean isActive;
+
 }

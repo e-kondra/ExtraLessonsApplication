@@ -12,7 +12,7 @@ import java.util.Map;
 
 @Controller
 public class SchoolController {
-    private SchoolService schoolService;
+    private final SchoolService schoolService;
     @Autowired // Dependency Injection
     public SchoolController(SchoolService schoolService){
         this.schoolService = schoolService;

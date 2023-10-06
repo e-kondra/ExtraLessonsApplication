@@ -19,5 +19,9 @@ public class SchoolService {
         return (ArrayList<SchoolEntity>) this.schoolRepository.findAll();
     }
 
+    public ArrayList<SchoolEntity> getAllActiveSchools() {
+        return (ArrayList<SchoolEntity>) this.schoolRepository.findAllByIsActiveIsTrue();
+    }
+
 
 }
