@@ -2,9 +2,11 @@ package com.extralessonsapplication.lesson;
 
 import com.extralessonsapplication.school.SchoolEntity;
 import com.extralessonsapplication.school.SchoolRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 
+@Service
 public class LessonService {
     private final LessonRepository lessonRepository;
 
