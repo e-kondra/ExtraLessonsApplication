@@ -50,4 +50,8 @@ public class UserService {
             return null;
         }
     }
+
+    public ArrayList<UserEntity> getAllActiveTeachers(){
+        return this.userRepository.findAllByRoleEqualsAndIsActiveTrue(UserRole.TEACHER);
+    }
 }
