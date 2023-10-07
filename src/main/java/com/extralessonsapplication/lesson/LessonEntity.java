@@ -1,14 +1,15 @@
 package com.extralessonsapplication.lesson;
+import com.extralessonsapplication.school.SchoolEntity;
 import com.extralessonsapplication.student.StudentEntity;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import com.extralessonsapplication.user.UserEntity;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.sql.Timestamp;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @AllArgsConstructor
@@ -17,10 +18,15 @@ import java.util.List;
 public class LessonEntity {
     @Id @GeneratedValue
     private Long id;
-    private String name;
+    private Timestamp date;
+    private String title;
+    private String comment;
+    @ManyToOne
+    private UserEntity teacher;
+    @ManyToOne
+    private SchoolEntity school;
     private Boolean isActive;
-    @OneToMany (mappedBy = "school")
-    private List<LessonEntity> lessons;
-
+    @OneToMany(mappedBy = "lesson")
+    Set<Participation> participations;
 
 }

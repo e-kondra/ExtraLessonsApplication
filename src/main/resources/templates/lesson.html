@@ -1,12 +1,49 @@
+
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<head th:replace="~{fragments/headers.html::head}"></head>
 <body>
-<img src="../images/slides/img5.jpg" alt="Techro HTML5 template"
-        style="width: 80px; height: 100px"
-/></a>
+<header th:replace="~{fragments/headers.html::moderator_user_navbar}"></header>
+<header id="head" class="secondary">
+    <div class="container">
+        <h1>Lesson Create</h1>
+    </div>
+</header>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8">
+            <h3 class="section-title">Please enter data</h3>
+        </div>
+    </div>
+    <div class="form-group">
+        <label>Date</label>
+        <input type="date" class="form-control" name="date" th:value="${NowDate}">
+    </div>
+    <div class="form-group">
+        <label>School</label>
+        <select class="form-control" name="school">
+            <option value="0">select option</option>
+            <option th:each="school : ${schools}" th:value="${school.getId()}" th:text="${school.getName()}"></option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Teacher</label>
+        <select class="form-control" name="teacher">
+            <option value="0">select option</option>
+            <option th:each="teacher : ${teachers}" th:value="${teacher.getId()}" th:text="${teacher.getName()} +' '+ ${teacher.getLastname()}"></option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label>Title</label>
+        <input name="title" type="text" class="form-control" placeholder="Title of the Lesson">
+    </div>
+    <div class="form-group">
+        <label>Comment</label>
+        <textarea name="comment" type="text" class="form-control" placeholder="Comment"></textarea>
+    </div>
+    <button type="submit" class="btn btn-two">Create</button><p><br/></p>
+</div>
 </body>
+<div th:replace="~{fragments/scripts::scripts}"></div>
 </html>
