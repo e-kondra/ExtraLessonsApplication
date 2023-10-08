@@ -1,14 +1,13 @@
 package com.extralessonsapplication.lesson;
+import com.extralessonsapplication.participation.Participation;
 import com.extralessonsapplication.school.SchoolEntity;
-import com.extralessonsapplication.student.StudentEntity;
 import com.extralessonsapplication.user.UserEntity;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.sql.Timestamp;
-import java.util.List;
+import java.sql.Date;
 import java.util.Set;
 
 @Data
@@ -18,7 +17,7 @@ import java.util.Set;
 public class LessonEntity {
     @Id @GeneratedValue
     private Long id;
-    private Timestamp date;
+    private Date date;
     private String title;
     private String comment;
     @ManyToOne

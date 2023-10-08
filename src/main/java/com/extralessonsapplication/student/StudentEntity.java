@@ -1,6 +1,6 @@
 package com.extralessonsapplication.student;
 
-import com.extralessonsapplication.lesson.Participation;
+import com.extralessonsapplication.participation.Participation;
 import com.extralessonsapplication.school.SchoolEntity;
 import jakarta.persistence.*;
 import lombok.*;

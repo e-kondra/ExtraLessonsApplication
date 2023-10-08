@@ -1,5 +1,6 @@
 package com.extralessonsapplication.student;
 
+import com.extralessonsapplication.school.SchoolEntity;
 import com.extralessonsapplication.user.UserEntity;
 import com.extralessonsapplication.user.UserRole;
 import com.extralessonsapplication.user.UserService;
@@ -41,4 +42,7 @@ public class StudentService {
         }
     }
 
+    public ArrayList<StudentEntity> getAllActiveStudentsBySchool(SchoolEntity school) throws Exception {
+        return (ArrayList<StudentEntity>) this.studentRepository.findAllBySchoolEqualsAndIsActiveTrue(school);
+    }
 }

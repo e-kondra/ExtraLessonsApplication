@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="~{fragments/headers.html::head}"></head>
+<body>
+<header th:replace="~{fragments/headers.html::moderator_user_navbar}"></header>
+<header id="head" class="secondary">
+  <div class="container">
+    <h1>User Update</h1>
+  </div>
+</header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <h3 class="section-title">Please mark students present on the lesson</h3>
+
+      <form class="form-light mt-20" role="form" th:action="'/participations_create/' + ${lesson.getId()}" method="post">
+        <table class="table table-striped table-bordered">
+          <thead>
+          <tr>
+            <th scope="col">Name and Last Name</th>
+            <th scope="col">Present</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr th:each="student: ${students}" th:name="participation">
+            <td th:name="${student.getId()}" th:text="${student.getName() + ' ' + student.getLastName()}"></td>
+            <td><input type="checkbox" th:name="${student.getId()}" th:value="${true? true:false}"></td>
+          </tr>
+          </tbody>
+        </table>
+        <button class="btn btn-two">Save</button><p><br/></p>
+      </form>
+    </div>
+  </div>
+</div>
+<div th:replace="~{fragments/scripts::scripts}"></div>
+</body>
+</html>
