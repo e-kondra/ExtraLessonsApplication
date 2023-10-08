@@ -14,11 +14,18 @@ public class LessonService {
         this.lessonRepository=lessonRepository;
     }
 
-    public void createSchool(LessonEntity lessonEntity) throws Exception{
-        this.lessonRepository.save(lessonEntity);
-    }
     public ArrayList<LessonEntity> getAllLessons() {
         return (ArrayList<LessonEntity>) this.lessonRepository.findAll();
     }
 
+    public void createLesson(LessonEntity lessonEntity) {
+        this.lessonRepository.save(lessonEntity);
+    }
+    public LessonEntity createLessonObj(LessonEntity lessonEntity) {
+        return this.lessonRepository.save(lessonEntity);
+    }
+
+    public LessonEntity getLessonById(Long lessonId) throws Exception{
+        return this.lessonRepository.findById(lessonId).orElseThrow();
+    }
 }
