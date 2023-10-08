@@ -32,7 +32,7 @@
                     <td th:text="${student.getContractBegin()}"></td>
                     <td th:text="${student.getContractEnd()}"></td>
                     <td th:text="${student.getIsActive().toString()}"></td>
-                    <td><a href="">Update</a></td>
+                    <td><a th:href="'/student_update/' + ${student.getId()}">Update</a></td>
                 </tr>
                 </tbody>
             </table>
