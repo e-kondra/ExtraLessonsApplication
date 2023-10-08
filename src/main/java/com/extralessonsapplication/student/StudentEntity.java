@@ -2,6 +2,7 @@ package com.extralessonsapplication.student;
 
 import com.extralessonsapplication.participation.Participation;
 import com.extralessonsapplication.school.SchoolEntity;
+
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -27,7 +28,7 @@ public class StudentEntity {
     private SchoolEntity school;
     private LocalDate contractBegin;
     private LocalDate contractEnd;
-    private Boolean isActive;
+    private Boolean isActive=false;
     @OneToMany(mappedBy = "student")
     Set<Participation> participations;
 
