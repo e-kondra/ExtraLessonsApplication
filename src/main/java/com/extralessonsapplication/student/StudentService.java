@@ -45,4 +45,14 @@ public class StudentService {
     public ArrayList<StudentEntity> getAllActiveStudentsBySchool(SchoolEntity school) throws Exception {
         return (ArrayList<StudentEntity>) this.studentRepository.findAllBySchoolEqualsAndIsActiveTrue(school);
     }
+
+    public StudentEntity findStudentById(Long id) throws Exception{
+            return this.studentRepository.findById(id).orElseThrow();
+    }
+
+    public void updateStudent(StudentEntity studentEntity) throws Exception{
+        this.studentRepository.save(studentEntity);
+        }
 }
+
+

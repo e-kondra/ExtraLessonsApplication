@@ -1,47 +1,50 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:form="http://www.w3.org/1999/html">
+<html lang="en">
 <head th:replace="~{fragments/headers.html::head}"></head>
 <body>
 <header th:replace="~{fragments/headers.html::moderator_user_navbar}"></header>
 <header id="head" class="secondary">
     <div class="container">
         <h1>Student</h1>
-        <p>Create New Student</p>
+        <p>Update Student</p>
     </div>
 </header>
 <div class="container">
     <div class="row">
         <div class="col-md-8">
             <h3 class="section-title">Please enter data</h3>
-            <form class="form-light mt-20" role="form" action="/student_create" method="post">
+            <form class="form-light mt-20" role="form" th:action="'/student_update/'+${student.getId()}" method="post">
                 <div class="form-group">
                     <label>Name</label>
-                    <input name="name" type="text" class="form-control" placeholder="name">
+                    <input name="name" type="text" class="form-control" th:value="${student.getName()}">
                 </div>
                 <div class="form-group">
                     <label>Last name</label>
-                    <input name="lastName" type="text" class="form-control" placeholder="last name">
+                    <input name="lastName" type="text" class="form-control" th:value="${student.getLastName()}">
                 </div>
                 <div class="form-group">
                     <label>Personal code</label>
-                    <input name="personalCode" type="text" class="form-control" placeholder="personal code">
+                    <input name="personalCode" type="text" class="form-control" th:value="${student.getPersonalCode()}">
                 </div>
                 <div class="form-group">
                     <label>School</label>
                     <select class="form-control" name="school">
                         <option value="0">--Please choose an option--</option>
-                        <option th:each="school : ${schools}" th:value="${school.id}" th:text="${school.name}"></option>
+                        <option th:each="school : ${schools}" th:value="${student.getSchool()}" th:text="${school.name}"></option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label>Contract begin</label>
-                    <input name="contractBegin" type="date" class="form-control" placeholder="contact begin">
+                    <input name="contractBegin" type="date" class="form-control" th:value="${student.getContractBegin()}">
                 </div>
                 <div class="form-group">
                     <label>Contract end</label>
-                    <input name="contractEnd" type="date" class="form-control" placeholder="contact end">
+                    <input name="contractEnd" type="date" class="form-control" th:value="${student.getContractEnd()}">
                 </div>
-
+                <div class="form-group">
+                    <input type="checkbox" name="isActive" th:checked="${student.getIsActive()}">
+                    <label>Is Active</label>
+                </div>
                 <button type="submit" class="btn btn-two">Submit</button><p><br/></p>
             </form>
         </div>

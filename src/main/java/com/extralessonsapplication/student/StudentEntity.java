@@ -5,7 +5,8 @@ import com.extralessonsapplication.school.SchoolEntity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.sql.Date;
+
+import java.time.LocalDate;
 import java.util.Set;
 
 
@@ -24,8 +25,8 @@ public class StudentEntity {
     private String personalCode;
     @ManyToOne
     private SchoolEntity school;
-    private Date contractBegin;
-    private Date contractEnd;
+    private LocalDate contractBegin;
+    private LocalDate contractEnd;
     private Boolean isActive;
     @OneToMany(mappedBy = "student")
     Set<Participation> participations;
