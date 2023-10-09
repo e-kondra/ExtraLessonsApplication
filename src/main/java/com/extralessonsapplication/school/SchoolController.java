@@ -19,12 +19,12 @@ public class SchoolController {
     }
 
     @GetMapping("/school_create")
-    public String displaySchoolCreatingPage(Model model){
+    public String displaySchoolCreatingPage(){
         return "school";
     }
 
     @PostMapping("/school_create")
-    public String handleSchoolCreating(SchoolEntity schoolEntity, @RequestParam Map<String, String> requestParams){
+    public String handleSchoolCreating(SchoolEntity schoolEntity){
         try {
             System.out.println(schoolEntity);
             schoolEntity.setIsActive(true);
@@ -47,7 +47,7 @@ public class SchoolController {
             model.addAttribute("school", school);
             return "school_update";
         } catch (Exception e){
-            return "";
+            return "redirect:/schoolsList?status=SCHOOL_UPDATING_FAILED&error" + e.getMessage();
         }
     }
 

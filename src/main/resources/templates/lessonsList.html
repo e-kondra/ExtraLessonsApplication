@@ -31,7 +31,7 @@
                     <td th:text="${lesson.getSchool()}"></td>
                     <td th:text="${lesson.getTeacher()}"></td>
                     <td th:text="${lesson.getComment()}"></td>
-                    <td th:text="${lesson.getIsActive()}? 'true': 'false'"></td>
+                    <td th:text="${lesson.getIsActive()}"></td>
                     <td><a th:href="'lesson_update/' + ${lesson.getId()}">Update</a></td>
                 </tr>
                 </tbody>
