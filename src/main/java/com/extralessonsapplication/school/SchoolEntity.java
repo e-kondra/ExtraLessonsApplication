@@ -19,6 +19,15 @@ public class SchoolEntity {
     private Long id;
     private String name;
     private Boolean isActive;
+    private String address;
+    private String phone;
+
+    public SchoolEntity(String name, Boolean isActive, String address, String phone) {
+        this.name = name;
+        this.isActive = isActive;
+        this.address = address;
+        this.phone = phone;
+    }
 
     @Override
     public String toString() {
