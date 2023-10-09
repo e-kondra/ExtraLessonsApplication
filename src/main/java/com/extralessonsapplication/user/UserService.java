@@ -5,12 +5,11 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.CookieValue;
 
 import java.util.ArrayList;
-import java.util.Optional;
 
 @Service
 public class UserService {
 
-    private UserRepository userRepository;
+    private final UserRepository userRepository;
 
     public UserService(UserRepository userRepository){
         this.userRepository=userRepository;
@@ -36,7 +35,7 @@ public class UserService {
     }
 
     public void updateUser(UserEntity userEntity) throws Exception{
-        userEntity.setIsActive( (userEntity.getIsActive()== null)? false: true);
+        userEntity.setIsActive( userEntity.getIsActive()!= null);
         this.userRepository.save(userEntity);
     }
 

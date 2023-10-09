@@ -32,7 +32,7 @@ public class LessonService {
     }
 
     public void updateLesson(LessonEntity updatedLesson) {
-        updatedLesson.setIsActive( (updatedLesson.getIsActive()== null)? false: true);
+        updatedLesson.setIsActive( updatedLesson.getIsActive()!= null);
         this.lessonRepository.save(updatedLesson);
     }
 }
