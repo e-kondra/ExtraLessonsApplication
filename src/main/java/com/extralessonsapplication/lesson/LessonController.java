@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDate;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Map;
 
 @Controller
@@ -47,40 +50,45 @@ public class LessonController {
             lessonEntity.setIsActive(true);
             LessonEntity createdLesson = this.lessonService.createLessonObj(lessonEntity);
             System.out.println(createdLesson);
-            //this.lessonService.createLesson(lessonEntity);
             return "redirect:/participations_create/" + lessonEntity.getId() + "?status=LESSON_CREATION_SUCCESS";
         } catch (Exception exception){
             return "redirect:/lessonsList?status=LESSON_CREATION_FAILED&error" + exception.getMessage();
         }
     }
-    @GetMapping("/participations_create/{lessonId}")
-    public String displayParticipationsCreating(@PathVariable() Long lessonId, Model model){
-        try {
-            LessonEntity createdLesson = this.lessonService.getLessonById(lessonId);
-            model.addAttribute("lesson", createdLesson);
-            model.addAttribute("students", this.studentService.getAllActiveStudentsBySchool(createdLesson.getSchool()));
-            return "school_students";
-        } catch (Exception exception){
-            return "redirect:/lesson_update/?status=STUDENTS_PARTICIPATION_FAILED&error" + exception.getMessage();
-        }
-    }
-
-    @PostMapping("/participations_create/{lessonId}")
-    public String handleParticipationsCreating( @PathVariable() Long lessonId,@RequestParam Map<String, String> requestParams){
-        try {
-            LessonEntity createdLesson = this.lessonService.getLessonById(lessonId);
-            this.participationService.createLessonsParticipations(createdLesson, requestParams, this.studentService.getAllActiveStudentsBySchool(createdLesson.getSchool()));
-            return "redirect:/lesson_update/?status=STUDENTS_PARTICIPATION_SUCCESS";
-        } catch (Exception exception){
-            return "redirect:/lesson_update/?status=STUDENTS_PARTICIPATION_FAILED&error" + exception.getMessage();
-        }
-    }
-
 
     @GetMapping("/lessonsList")
     public String displayLessonsList(Model model){
         model.addAttribute("lessons", this.lessonService.getAllLessons());
         return "lessonsList";
+    }
+
+    @GetMapping("/lesson_update/{id}")
+    public String displayLessonUpdate(@PathVariable("id") Long lessonId, Model model){
+        try{
+            LessonEntity lesson = this.lessonService.getLessonById(lessonId);
+            model.addAttribute("lesson", lesson);
+            model.addAttribute("schools", this.schoolService.getAllActiveSchools());
+            model.addAttribute("teachers", this.userService.getAllActiveTeachers());
+            model.addAttribute("participations", this.participationService.getParticipationsByLesson(lesson));
+            return "lesson_update";
+        } catch (Exception e){
+            return "redirect:/lessonsList?status=LESSON_UPDATING_FAILED&error" + e.getMessage();
+        }
+    }
+
+    @PostMapping("/lesson_update/{id}")
+    public String handleLessonUpdate(@PathVariable("id") Long lessonId,
+                                     LessonEntity updatedLesson,
+                                     @RequestParam Map<String, String> requestParams){
+        try{
+            System.out.println(requestParams);
+            this.lessonService.updateLesson(updatedLesson);
+            this.participationService.updateLessonsParticipations(updatedLesson,
+                    requestParams, this.participationService.getParticipationsByLesson(updatedLesson));
+            return "redirect:/lessonsList?status=LESSON_UPDATING_SUCCESS";
+        } catch (Exception e) {
+            return "redirect:/lessonsList?status=LESSON_UPDATING_FAILED&error" + e.getMessage();
+        }
     }
 
 }

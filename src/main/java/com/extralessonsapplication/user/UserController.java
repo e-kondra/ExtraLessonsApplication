@@ -1,8 +1,9 @@
 package com.extralessonsapplication.user;
 
+import com.extralessonsapplication.student.StudentEntity;
+import com.extralessonsapplication.student.StudentService;
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
-import jakarta.websocket.server.PathParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,10 +15,12 @@ import java.util.Map;
 
 @Controller
 public class UserController {
-    private UserService userService;
+    private final UserService userService;
+    private final StudentService studentService;
     @Autowired // Dependency Injection
-    public UserController(UserService userService){
+    public UserController(UserService userService, StudentService studentService){
         this.userService = userService;
+        this.studentService = studentService;
     }
     @GetMapping("/login")
     public String displayLoginPage(){
@@ -60,8 +63,8 @@ public class UserController {
         try {
             System.out.println(userEntity);
             String studentPersonalCode = requestParams.get("studentPersonalCode");
-            //find student by personalCode if exist
-            //userEntity.getStudent(findStudentByPersonalCode); //add it to user
+            StudentEntity studentEntity = this.studentService.getStudentByPersonalCode(studentPersonalCode);
+            userEntity.setStudent(studentEntity);
             userEntity.setIsActive(true);
             this.userService.createUser(userEntity);
             return "redirect:/usersList?status=USER_CREATION_SUCCESS";
@@ -102,21 +105,17 @@ public class UserController {
     }
 
     @PostMapping("/user_update/{id}")
-    public String handleUserUpdate(@PathVariable() Long id, UserEntity user){
+    public String handleUserUpdate(@PathVariable() Long id, UserEntity user,@RequestParam Map<String, String> requestParams){
         try {
             this.userService.findUserById(id);
             user.setId(id);
+            String studentPersonalCode = requestParams.get("studentPersonalCode");
+            user.setStudent(this.studentService.getStudentByPersonalCode(studentPersonalCode));
             this.userService.updateUser(user);
             return "redirect:/usersList?message=USER_UPDATE_SUCCESS";
         } catch (Exception exception){
             return "redirect:/usersList?message=USER_UPDATE_FAILED&error=" + exception.getMessage();
         }
     }
-
-    @GetMapping("/teacher/some")
-    public String displayTeacherPage() {
-        return "teacherMain";
-    }
-
 
 }

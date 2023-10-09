@@ -20,7 +20,6 @@ public class Participation {
     @ManyToOne
     @JoinColumn(name = "lesson_id")
     private LessonEntity lesson;
-
     private boolean attended;
 
     public Participation(StudentEntity student, LessonEntity lesson, boolean attended) {
@@ -28,4 +27,5 @@ public class Participation {
         this.lesson = lesson;
         this.attended = attended;
     }
+
 }

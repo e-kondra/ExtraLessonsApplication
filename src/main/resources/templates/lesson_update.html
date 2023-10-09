@@ -1,0 +1,74 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="~{fragments/headers.html::head}"></head>
+<body>
+<header th:replace="~{fragments/headers.html::moderator_user_navbar}"></header>
+<header id="head" class="secondary">
+  <div class="container">
+    <h1>Lesson Create</h1>
+  </div>
+</header>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <h3 class="section-title">Update data</h3>
+    </div>
+  </div>
+  <form class="form-light mt-20" role="form" th:action="'/lesson_update/' + ${lesson.getId()}" method="post">
+    <div class="form-group">
+      <label for="date">Date</label>
+      <input id="date" type="date" class="form-control" name="date" th:value="${lesson.getDate()}">
+    </div>
+    <div class="form-group">
+      <label for="school">School</label>
+      <select class="form-control" name="school" id="school" required>
+        <option th:each="school : ${schools}" th:value="${school.getId()}" th:text="${school.getName()}"
+                th:selected="${lesson.getSchool()}"></option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="teacher">Teacher</label>
+      <select class="form-control" id="teacher" name="teacher">
+        <option value="0">select option</option>
+        <option th:each="teacher : ${teachers}" th:value="${teacher.getId()}" th:text="${teacher.getName()} +' '+ ${teacher.getLastname()}"
+                th:selected="${lesson.getTeacher()}"></option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="title">Title</label>
+      <input th:value="${lesson.getTitle()}" name="title" id="title"type="text" class="form-control" placeholder="Title of the Lesson" required>
+    </div>
+    <div class="form-group">
+      <label for="comment">Comment</label>
+      <textarea th:value="${lesson.getComment()}" id="comment"  type="text" class="form-control" placeholder="Comment"></textarea>
+    </div>
+    <div class="form-group">
+      <input type="checkbox" id="isActive" name="isActive" th:checked="${lesson.getIsActive()}">
+      <label for="isActive">Is Active</label>
+    </div>
+      <table class="table table-striped table-bordered">
+        <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Name and Last Name</th>
+          <th scope="col">Present</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="part: ${participations}" th:name="participation">
+          <td th:text="${part.getId()}"></td>
+          <td th:text="${part.getStudent()}"></td>
+          <td><input type="checkbox" th:name="${part.getId()}" th:checked="${part.isAttended()}"? true : false></td>
+        </tr>
+        </tbody>
+      </table>
+    <div>
+      <button type="submit" class="btn btn-two">Save</button><p><br/></p>
+    </div>
+  </form>
+</div>
+</body>
+<div th:replace="~{fragments/scripts::scripts}"></div>
+</html>

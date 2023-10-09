@@ -11,8 +11,7 @@ import java.time.LocalDate;
 import java.util.Set;
 
 
-@Setter
-@Getter
+@Data
 @ToString
 @AllArgsConstructor
 @NoArgsConstructor
@@ -32,4 +31,8 @@ public class StudentEntity {
     @OneToMany(mappedBy = "student")
     Set<Participation> participations;
 
+    @Override
+    public String toString() {
+        return name +" "+ lastName;
+    }
 }
