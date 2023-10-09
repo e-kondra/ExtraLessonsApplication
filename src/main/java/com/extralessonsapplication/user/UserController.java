@@ -1,5 +1,6 @@
 package com.extralessonsapplication.user;
 
+import com.extralessonsapplication.school.SchoolService;
 import com.extralessonsapplication.student.StudentEntity;
 import com.extralessonsapplication.student.StudentService;
 import jakarta.servlet.http.Cookie;
@@ -17,10 +18,12 @@ import java.util.Map;
 public class UserController {
     private final UserService userService;
     private final StudentService studentService;
+    private final SchoolService schoolService;
     @Autowired // Dependency Injection
-    public UserController(UserService userService, StudentService studentService){
+    public UserController(UserService userService, StudentService studentService, SchoolService schoolService){
         this.userService = userService;
         this.studentService = studentService;
+        this.schoolService = schoolService;
     }
     @GetMapping("/login")
     public String displayLoginPage(){
@@ -116,6 +119,12 @@ public class UserController {
         } catch (Exception exception){
             return "redirect:/usersList?message=USER_UPDATE_FAILED&error=" + exception.getMessage();
         }
+    }
+
+    @GetMapping("teacher")
+    public String displayTeacherPage(Model model){
+        model.addAttribute("schools", this.schoolService.getAllActiveSchools());
+        return "teacherMain";
     }
 
 }
