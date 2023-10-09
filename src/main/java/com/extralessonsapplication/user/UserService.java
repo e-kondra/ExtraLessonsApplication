@@ -36,6 +36,7 @@ public class UserService {
     }
 
     public void updateUser(UserEntity userEntity) throws Exception{
+        userEntity.setIsActive( (userEntity.getIsActive()== null)? false: true);
         this.userRepository.save(userEntity);
     }
 
@@ -43,7 +44,7 @@ public class UserService {
         return this.userRepository.findByStudentAndIsActiveTrue(studentEntity);
     }
 
-    public UserEntity getUserByCookies(@CookieValue(value = "loggedInUserId", defaultValue = "") String userId){
+    public UserEntity getCurrentUserByCookies(@CookieValue(value = "loggedInUserId", defaultValue = "") String userId){
         try {
             return this.userRepository.findById(Long.parseLong(userId)).orElseThrow();
         }catch (Exception e){

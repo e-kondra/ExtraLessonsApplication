@@ -29,11 +29,10 @@
                     <td th:text="${lesson.getDate()}"></td>
                     <td th:text="${lesson.getTitle()}"></td>
                     <td th:text="${lesson.getSchool()}"></td>
-                    <td th:text="${lesson.getTeacher().getName() + ' ' + lesson.getTeacher().getLastname()}"></td>
+                    <td th:text="${lesson.getTeacher()}"></td>
                     <td th:text="${lesson.getComment()}"></td>
-                    <td th:text="${lesson.getIsActive()}"> <input type="checkbox" th:checked="${userItem.getIsActive()}">
-                        <label> </label></td>
-                    <td><a href="">Update</a></td>
+                    <td th:text="${lesson.getIsActive()}? 'true': 'false'"></td>
+                    <td><a th:href="'lesson_update/' + ${lesson.getId()}">Update</a></td>
                 </tr>
                 </tbody>
             </table>

@@ -17,41 +17,41 @@
 
 <form class="form-light mt-20" role="form" th:action="${'/user_update/' + userItem.getId()}" method="post" th:object="${userItem}">
     <div class="form-group">
-      <label>Username</label>
-      <input name="username" type="text" class="form-control" th:value="${userItem.getUsername()}" th:placeholder="${userItem.getUsername()}">
+      <label for="username">Username</label>
+      <input id="username" name="username" type="text" class="form-control" th:value="${userItem.getUsername()}" th:placeholder="${userItem.getUsername()}">
     </div>
     <div class="form-group">
-      <label>Password</label>
-      <input name="password" type="password" class="form-control" th:value="${userItem.getPassword()}"th:placeholder="${userItem.getPassword()}">
+      <label for="password">Password</label>
+      <input id="password" name="password" type="password" class="form-control" th:value="${userItem.getPassword()}" th:placeholder="${userItem.getPassword()}">
     </div>
 
     <div class="form-group">
-      <label>Role</label>
-      <select class="form-control" name="role">
+      <label for="role">Role</label>
+      <select class="form-control" id="role" name="role">
         <option th:each="role: ${roles}" th:value="${role.toString()}"
                 th:text="${role.toString()}"
                 th:selected="${userItem.getRole().toString().equals(role.toString())}"></option>
       </select>
     </div>
     <div class="form-group">
-      <label>Name</label>
-      <input name="name" type="text" class="form-control" th:value="${userItem.getName()}" th:placeholder="${userItem.getName()}">
+      <label for="name">Name</label>
+      <input id="name" name="name" type="text" class="form-control" th:value="${userItem.getName()}" th:placeholder="${userItem.getName()}">
     </div>
     <div class="form-group">
-      <label>Last name</label>
-      <input name="lastname" type="text" class="form-control" th:value="${userItem.getLastname()}" th:placeholder="${userItem.getLastname()}">
+      <label for="lastname">Last name</label>
+      <input id="lastname" name="lastname" type="text" class="form-control" th:value="${userItem.getLastname()}" th:placeholder="${userItem.getLastname()}">
     </div>
     <div class="form-group">
-      <label>Email</label>
-      <input name="email" type="email" class="form-control" th:value="${userItem.getEmail()}" th:placeholder="${userItem.getEmail()}">
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" class="form-control" th:value="${userItem.getEmail()}" th:placeholder="${userItem.getEmail()}">
     </div>
     <div class="form-group">
-      <label>Student's Personal Code</label>
-      <input name="studentPersonalCode" type="text" class="form-control" placeholder=" "><!--  ${student.getPersonalCode()}-->
+      <label for="studentPersonalCode">Student's Personal Code</label>
+      <input id="studentPersonalCode" name="studentPersonalCode" type="text" class="form-control" placeholder=" "><!--  ${student.getPersonalCode()}-->
     </div>
     <div class="form-group">
-      <input type="checkbox" name="isActive" th:checked="${userItem.getIsActive()}">
-      <label>Is Active</label>
+      <input id="isActive" type="checkbox" name="isActive" th:checked="${userItem.getIsActive()}">
+      <label for="isActive">Is Active</label>
     </div>
     <button class="btn btn-two">Save</button><p><br/></p>
   </form>

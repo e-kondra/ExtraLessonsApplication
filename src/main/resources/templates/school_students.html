@@ -25,7 +25,7 @@
           </thead>
           <tbody>
           <tr th:each="student: ${students}" th:name="participation">
-            <td th:name="${student.getId()}" th:text="${student.getName() + ' ' + student.getLastName()}"></td>
+            <td th:name="${student.getId()}" th:text="${student}"></td>
             <td><input type="checkbox" th:name="${student.getId()}" th:value="${true? true:false}"></td>
           </tr>
           </tbody>

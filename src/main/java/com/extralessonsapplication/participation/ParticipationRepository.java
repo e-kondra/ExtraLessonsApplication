@@ -1,7 +1,10 @@
 package com.extralessonsapplication.participation;
 
+import com.extralessonsapplication.lesson.LessonEntity;
 import org.springframework.data.repository.CrudRepository;
 
-public interface ParticipationRepository extends CrudRepository<Participation, Long> {
+import java.util.ArrayList;
 
+public interface ParticipationRepository extends CrudRepository<Participation, Long> {
+    ArrayList<Participation> findAllByLessonEquals(LessonEntity lesson);
 }

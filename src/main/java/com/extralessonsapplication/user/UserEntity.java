@@ -28,6 +28,11 @@ public class UserEntity {
     private Timestamp createdAt;
     private Timestamp updatedAt;
 
+    @Override
+    public String toString() {
+        return name +" "+ lastname;
+    }
+
     @PrePersist // this will allow the method to be called before a chat Object is saved to Database
     public void beforeSave(){
         this.createdAt = new Timestamp(System.currentTimeMillis());

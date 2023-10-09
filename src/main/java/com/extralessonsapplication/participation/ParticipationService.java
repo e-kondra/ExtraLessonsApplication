@@ -26,4 +26,17 @@ public class ParticipationService {
             this.participationRepository.save(participation);
         }
     }
+
+    public ArrayList<Participation> getParticipationsByLesson(LessonEntity lesson){
+        return this.participationRepository.findAllByLessonEquals(lesson);
+    }
+
+    public void updateLessonsParticipations(LessonEntity updatedLesson,
+                                            Map<String, String> editedParticipations,
+                                            ArrayList<Participation> participations) {
+        for(Participation part: participations){
+            part.setAttended(editedParticipations.containsKey(part.getId().toString()));
+            this.participationRepository.save(part);
+        }
+    }
 }

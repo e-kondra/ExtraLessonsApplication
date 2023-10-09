@@ -53,6 +53,10 @@ public class StudentService {
     public void updateStudent(StudentEntity studentEntity) throws Exception{
         this.studentRepository.save(studentEntity);
         }
+
+    public StudentEntity getStudentByPersonalCode(String personalCode){
+        return this.studentRepository.findByPersonalCodeEquals(personalCode);
+    }
 }
 
 
