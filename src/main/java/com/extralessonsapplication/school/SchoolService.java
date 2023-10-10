@@ -28,6 +28,7 @@ public class SchoolService {
         return this.schoolRepository.findById(id).orElseThrow();
     }
 
+
     public void updateSchool(SchoolEntity school) throws Exception{
         school.setIsActive( school.getIsActive()!= null);
         this.schoolRepository.save(school);
