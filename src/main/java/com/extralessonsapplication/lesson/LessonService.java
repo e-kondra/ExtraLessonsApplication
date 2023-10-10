@@ -1,6 +1,7 @@
 package com.extralessonsapplication.lesson;
 
 import com.extralessonsapplication.participation.ParticipationService;
+import com.extralessonsapplication.school.SchoolEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -16,7 +17,6 @@ public class LessonService {
     }
 
     public ArrayList<LessonEntity> getAllLessons() {
-
         return (ArrayList<LessonEntity>) this.lessonRepository.findAll();
     }
 
@@ -34,5 +34,10 @@ public class LessonService {
     public void updateLesson(LessonEntity updatedLesson) {
         updatedLesson.setIsActive( updatedLesson.getIsActive()!= null);
         this.lessonRepository.save(updatedLesson);
+    }
+
+    public ArrayList<LessonEntity> getLessonsBySchool(SchoolEntity school){
+        return (ArrayList<LessonEntity>) this.lessonRepository
+                .findAllBySchoolEqualsAndIsActiveTrue(school);
     }
 }

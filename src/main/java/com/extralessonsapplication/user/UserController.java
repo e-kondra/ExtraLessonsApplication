@@ -1,9 +1,11 @@
 package com.extralessonsapplication.user;
 
+import com.extralessonsapplication.school.Counter;
 import com.extralessonsapplication.school.SchoolService;
 import com.extralessonsapplication.student.StudentEntity;
 import com.extralessonsapplication.student.StudentService;
 import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,11 +21,13 @@ public class UserController {
     private final UserService userService;
     private final StudentService studentService;
     private final SchoolService schoolService;
+    private final Counter counter = new Counter();
     @Autowired // Dependency Injection
     public UserController(UserService userService, StudentService studentService, SchoolService schoolService){
         this.userService = userService;
         this.studentService = studentService;
         this.schoolService = schoolService;
+
     }
     @GetMapping("/login")
     public String displayLoginPage(){
@@ -42,7 +46,8 @@ public class UserController {
             switch (user.getRole().toString()){
                 case "MODERATOR" -> {return "redirect:/moderator?status=LOGIN_SUCCESS";}
                 case "PARENT" -> {return "redirect:/lessonsList?status=LOGIN_SUCCESS";}
-                case "TEACHER" -> {return "redirect:/lessonsList?status=LOGIN_SUCCESS";}
+                case "TEACHER" -> {return "redirect:/teacher?status=LOGIN_SUCCESS";}
+
             }
             return "redirect:/?status=LOGIN_FAILED";
         } catch(Exception e){
@@ -85,11 +90,18 @@ public class UserController {
     @GetMapping("/logout")
     public String handleLogout(
             @CookieValue(value = "loggedInUserId", defaultValue = "") String UserId,
+            @CookieValue(name = "chosenSchoolId", defaultValue = "null") String chosenSchoolId,
             HttpServletResponse response
     ){
         Cookie cookie = new Cookie("loggedInUserId",null);
         cookie.setMaxAge(0);
         response.addCookie(cookie);
+
+        Cookie cookie2 = new Cookie("chosenSchoolId",null);
+        cookie2.setMaxAge(0);
+        cookie2.setPath("/");
+        response.addCookie(cookie2);
+
         return "redirect:/?status=LOGOUT_SUCCESSFUL";
     }
 
@@ -121,10 +133,14 @@ public class UserController {
         }
     }
 
-    @GetMapping("teacher")
-    public String displayTeacherPage(Model model){
+    @GetMapping("/teacher")
+    public String displayTeacherPage(Model model, @CookieValue(name="chosenSchoolId", required=false) String schoolId) {
+        model.addAttribute("counter", this.counter);
         model.addAttribute("schools", this.schoolService.getAllActiveSchools());
+        model.addAttribute("chosenSchoolId", schoolId);
         return "teacherMain";
     }
+
+
 
 }
