@@ -126,6 +126,10 @@ background:#BD69FF;
 .secondary p{
 font-size:18px;
 }
+.b0{
+	color:#fff;
+	background: #FFC225;
+}
 .b1{
 color:#fff;
 background:#F55;
@@ -141,6 +145,18 @@ background:#5EC64D;
 .b4{
 color:#fff;
 background: #FFC225;
+}
+.b5{
+	color:#fff;
+	background: #08D7B2;
+}
+.b6{
+	color:#fff;
+	background: #ED47C5;
+}
+.b7{
+	color:#fff;
+	background: #777;
 }
 .grey-box-icon h4{
 padding: 20px 0 10px;

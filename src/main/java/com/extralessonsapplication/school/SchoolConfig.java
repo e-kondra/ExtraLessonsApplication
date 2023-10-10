@@ -8,7 +8,7 @@ import java.sql.Timestamp;
 import java.time.ZonedDateTime;
 import java.util.List;
 
-@Configuration
+//@Configuration
 public class SchoolConfig {
     @Bean
     CommandLineRunner commandLineRunner(SchoolRepository repository){

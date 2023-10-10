@@ -146,3 +146,56 @@
     </div>
     <!-- /.navbar -->
 </header>
+
+<header th:fragment="teacher_user_navbar" >
+    <div class="navbar navbar-inverse">
+        <div class="container">
+            <div class="navbar-header">
+                <!-- Button for smallest screens -->
+                <button
+                        type="button"
+                        class="navbar-toggle"
+                        data-toggle="collapse"
+                        data-target=".navbar-collapse"
+                >
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand">
+                    <img
+                            th:src="@{/images/logo1.png}"
+                            alt="Techro HTML5 template"
+                            style="width: 80px;"
+                    /></a>
+                <a class="navbar-brand">
+                    <img
+                            th:src="@{/images/Roblo3.png}"
+                            alt="Techro HTML5 template"
+                            style="width: 300px;"
+                    /></a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav pull-right mainNav">
+                    <li class="c1"><a href="/teacher">School Selection</a></li>
+                    <li th:if="${chosenSchoolId}" class="c5 dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown">Lessons <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a th:href="'/lessonsList/' + ${chosenSchoolId}">All Lessons</a></li>
+                            <li><a href="/lesson_create">New Lesson</a></li>
+                        </ul>
+                    </li>
+                    <li th:if="${chosenSchoolId}" class="c3 dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown">Students <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li><a th:href="'/studentsList/' + ${chosenSchoolId}">All Students</a></li>
+                            <li><a href="/student_create">New Student</a></li>
+                        </ul>
+                    </li>
+                    <li class="c6"><a href="/logout">Logout</a></li>
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+    </div>
+</header>

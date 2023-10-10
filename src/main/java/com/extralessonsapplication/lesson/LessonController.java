@@ -1,9 +1,13 @@
 package com.extralessonsapplication.lesson;
 
 import com.extralessonsapplication.participation.ParticipationService;
+import com.extralessonsapplication.school.SchoolEntity;
 import com.extralessonsapplication.school.SchoolService;
 import com.extralessonsapplication.student.StudentService;
 import com.extralessonsapplication.user.UserService;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -87,6 +91,23 @@ public class LessonController {
                     requestParams, this.participationService.getParticipationsByLesson(updatedLesson));
             return "redirect:/lessonsList?status=LESSON_UPDATING_SUCCESS";
         } catch (Exception e) {
+            return "redirect:/lessonsList?status=LESSON_UPDATING_FAILED&error" + e.getMessage();
+        }
+    }
+
+    @GetMapping("/lessonsList/{id}")
+    public String displayLessonsListBySchool(@PathVariable("id") Long schoolId, HttpServletResponse response, HttpServletRequest request, Model model){
+        try {
+            SchoolEntity school = this.schoolService.getSchoolById(schoolId);
+            System.out.println(school);
+            Cookie cookie = new Cookie("chosenSchoolId",schoolId.toString());
+            cookie.setMaxAge(10000);
+            cookie.setPath("/");
+            response.addCookie(cookie);
+            model.addAttribute("chosenSchoolId", schoolId);
+            model.addAttribute("lessons", this.lessonService.getLessonsBySchool(school));
+            return "lessonsListBySchool";
+        }catch (Exception e){
             return "redirect:/lessonsList?status=LESSON_UPDATING_FAILED&error" + e.getMessage();
         }
     }

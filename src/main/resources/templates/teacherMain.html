@@ -3,7 +3,7 @@
 <html lang="en">
 <head th:replace="~{fragments/headers.html::head}"></head>
 <body>
-<header th:replace="~{fragments/headers.html::moderator_user_navbar}"></header>
+<header th:replace="~{fragments/headers.html::teacher_user_navbar}"></header>
 <header id="head" class="secondary">
   <div class="container">
     <h1>Please select a school you are working today</h1>
@@ -13,17 +13,19 @@
 <section class="features">
   <div class="container">
     <div class="row" >
-      <div th:each="school: ${schools}">
-        <div class="col-md-4">
-          <div th:class="'grey-box-icon c'+ ${school.getId()}">
+      <div th:each="school: ${schools}" th:with="mycounter = ${counter.get()}">
+        <div class="col-md-4 border border-dark" th:with="mycounter=${counter.incrementAndGet()}">
+          <div th:class="'grey-box-icon b'+ ${mycounter}">
             <h4 th:text="${school.getName()}"></h4>
             <p th:text="${school.getAddress()}"></p>
             <p th:text="${school.getPhone()}"></p>
-            <p><a href="/lessonsList"><em>Select</em></a></p>
+            <p><a th:href="'/lessonsList/' + ${school.getId()}"><em th:text="(${chosenSchoolId} == ${school.getId().toString()})?'SELECTED': 'Select'"></em></a></p>
+          </div>
           </div>
         </div>
-
       </div>
+
+      <div th:with="mycounter = ${counter.clear()}"></div>
     </div>
   </div>
 </section>
