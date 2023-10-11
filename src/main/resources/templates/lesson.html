@@ -3,7 +3,12 @@
 <html lang="en">
 <head th:replace="~{fragments/headers.html::head}"></head>
 <body>
-<header th:replace="~{fragments/headers.html::moderator_user_navbar}"></header>
+<div th:if="${isModerator}==true" >
+    <header th:replace="~{fragments/headers.html::moderator_user_navbar}"></header>
+</div>
+<div th:if="${isTeacher}==true">
+    <header th:replace="~{fragments/headers.html::teacher_user_navbar}"></header>
+</div>
 <header id="head" class="secondary">
     <div class="container">
         <h1>Lesson Create</h1>
@@ -23,17 +28,33 @@
         <input type="date" class="form-control" name="date" th:value="${NowDate}">
     </div>
     <div class="form-group">
-        <label>School</label>
-        <select class="form-control" name="school" required>
-            <option th:each="school : ${schools}" th:value="${school.getId()}" th:text="${school.getName()}"></option>
-        </select>
+        <div th:if="${isModerator}==true">
+            <label for="school">School</label>
+            <select id="school" class="form-control" name="school" required>
+                <option th:each="school : ${schools}" th:value="${school.getId()}" th:text="${school.getName()}"></option>
+            </select>
+        </div>
+        <div th:if="${isTeacher}==true">
+            <label for="school_">School</label>
+            <select readonly class="form-control" name="school" id="school_" required>
+                <option selected="true" th:value="${currentSchool.getId()}" th:text="${currentSchool.getName()}"></option>
+            </select>
+        </div>
     </div>
     <div class="form-group">
-        <label>Teacher</label>
-        <select class="form-control" name="teacher">
-            <option value="0">select option</option>
-            <option th:each="teacher : ${teachers}" th:value="${teacher.getId()}" th:text="${teacher.getName()} +' '+ ${teacher.getLastname()}"></option>
-        </select>
+        <div th:if="${isModerator}==true">
+            <label for="teacher">Teacher</label>
+            <select id="teacher" class="form-control" name="teacher">
+                <option value="0">select option</option>
+                <option th:each="teacher : ${teachers}" th:value="${teacher.getId()}" th:text="${teacher.getName()} +' '+ ${teacher.getLastname()}"></option>
+            </select>
+        </div>
+        <div th:if="${isTeacher}==true">
+            <label for="teacher_">Teacher</label>
+            <select readonly class="form-control" id="teacher_" name="teacher">
+                <option selected="true" th:value="${teacher.getId()}" th:text="${teacher}"></option>
+            </select>
+        </div>
     </div>
     <div class="form-group">
         <label>Title</label>

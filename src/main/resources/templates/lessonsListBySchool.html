@@ -7,6 +7,7 @@
 <header id="head" class="secondary">
     <div class="container">
         <h1>Lessons List</h1>
+        <p th:text="${school}"></p>
     </div>
 </header>
 <div class="container">
@@ -17,22 +18,17 @@
                 <tr>
                     <th scope="col">Date</th>
                     <th scope="col">Title</th>
-                    <th scope="col">School</th>
                     <th scope="col">Teacher</th>
-                    <th scope="col">Comment</th>
-                    <th scope="col">isActive</th>
-                    <th scope="col">Update</th>
+                    <th scope="col">View/Update</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="lesson: ${lessons}">
                     <td th:text="${lesson.getDate()}"></td>
-                    <td th:text="${lesson.getTitle()}"></td>
-                    <td th:text="${lesson.getSchool()}"></td>
+                    <td><a th:text="${lesson.getTitle()}" th:href="'/lesson_view/' + ${lesson.getId()}"></a></td>
                     <td th:text="${lesson.getTeacher()}"></td>
-                    <td th:text="${lesson.getComment()}"></td>
-                    <td th:text="${lesson.getIsActive()}"></td>
-                    <td><a th:href="'lesson_update/' + ${lesson.getId()}">Update</a></td>
+                    <td><a class="btn" th:href="'/lesson_update/' + ${lesson.getId()}">Update</a>
+                    </td>
                 </tr>
                 </tbody>
             </table>
