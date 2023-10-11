@@ -14,7 +14,8 @@ import java.util.Set;
 @NoArgsConstructor
 @Entity
 public class StudentEntity {
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     private Long id;
     private String name;
     private String lastName;

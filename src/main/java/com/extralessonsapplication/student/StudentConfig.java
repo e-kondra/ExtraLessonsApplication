@@ -11,7 +11,6 @@ import java.util.List;
 
 @Configuration
 public class StudentConfig {
-    private Object school;
 
     @Bean
     CommandLineRunner studentCommandLineRunner(StudentRepository repository, SchoolRepository schoolRepository){
@@ -27,8 +26,27 @@ public class StudentConfig {
                     LocalDate.of(2024, 6, 15),
                     true
             );
+            StudentEntity student2 = new StudentEntity(
+                    "Ekaterina",
+                    "Kondratyeva",
+                    "763424-16326",
+                    school1,
+                    LocalDate.of(2023, 9, 1),
+                    LocalDate.of(2024, 6, 15),
+                    true
+            );
+            StudentEntity student3 = new StudentEntity(
+                    "Valeria",
+                    "Zalygina",
+                    "452264-22531",
+                    school1,
+                    LocalDate.of(2023, 9, 1),
+                    LocalDate.of(2024, 6, 15),
+                    true
+            );
+
             repository.saveAll(
-                    List.of(student1));
+                    List.of(student1,student2,student3));
         };
     }
 }
