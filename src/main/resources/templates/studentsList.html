@@ -3,11 +3,18 @@
 <html lang="en">
 <head th:replace="~{fragments/headers.html::head}"></head>
 <body>
-<header th:replace="~{fragments/headers.html::moderator_user_navbar}"></header>
+<div th:if="${isModerator}==true" >
+    <header th:replace="~{fragments/headers.html::moderator_user_navbar}"></header>
+</div>
+<div th:if="${isTeacher}==true">
+    <header th:replace="~{fragments/headers.html::teacher_user_navbar}"></header>
+</div>
 <header id="head" class="secondary">
     <div class="container">
         <h1>Students List</h1>
+        <p th:if="${chosenSchoolId}" th:text="${currentSchool.getName()}"></p>
     </div>
+
 </header>
 <div class="container">
     <div class="row">
@@ -20,18 +27,22 @@
                     <th scope="col">School</th>
                     <th scope="col">Contract Start Date</th>
                     <th scope="col">Contract End Date</th>
-                    <th scope="col">isActive</th>
+                    <div th:if="${isModerator}==true">
+                        <th scope="col">isActive</th>
+                    </div>
                     <th scope="col">Update</th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="student: ${students}">
-                    <td th:text="${student.getName() + ' ' + student.getLastName()}"></td>
+                    <td><a th:href="'/student_view/' + ${student.getId()}" th:text="${student.getName() + ' ' + student.getLastName()}"></a></td>
                     <td th:text="${student.getPersonalCode()}"></td>
                     <td th:text="${student.getSchool()}"></td>
                     <td th:text="${student.getContractBegin()}"></td>
                     <td th:text="${student.getContractEnd()}"></td>
-                    <td th:text="${student.getIsActive().toString()}"></td>
+                    <div th:if="${isModerator}==true">
+                        <td th:text="${student.getIsActive().toString()}"></td>
+                    </div>
                     <td><a th:href="'/student_update/' + ${student.getId()}">Update</a></td>
                 </tr>
                 </tbody>

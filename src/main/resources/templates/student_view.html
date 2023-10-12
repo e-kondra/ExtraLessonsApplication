@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="~{fragments/headers.html::head}"></head>
+<body>
+<header th:replace="~{fragments/headers.html :: teacher_user_navbar}"></header>
+<header id="head" class="secondary">
+  <div class="container">
+    <h1>Student</h1>
+    <p>Update Student</p>
+  </div>
+</header>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <h3 class="section-title">Please enter data</h3>
+      <form class="form-light mt-20" role="form" th:action="'/student_view/'+${student.getId()}" method="get">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input readonly id="name" name="name" type="text" class="form-control" th:value="${student.getName()}">
+        </div>
+        <div class="form-group">
+          <label for="lastname">Last name</label>
+          <input readonly id="lastname" name="lastName" type="text" class="form-control" th:value="${student.getLastName()}">
+        </div>
+        <div class="form-group">
+          <label for="personalCode">Personal code</label>
+          <input readonly id="personalCode" name="personalCode" type="text" class="form-control" th:value="${student.getPersonalCode()}">
+        </div>
+        <div class="form-group">
+          <label for="school">School</label>
+          <input readonly id="school" type="text" class="form-control" name="school" th:value="${student.getSchool()}">
+        </div>
+        <div class="form-group">
+          <label for="contractBegin">Contract begin</label>
+          <input readonly id="contractBegin" name="contractBegin" type="date" class="form-control" th:value="${student.getContractBegin()}">
+        </div>
+        <div class="form-group">
+          <label for="contractEnd">Contract end</label>
+          <input readonly id="contractEnd" name="contractEnd" type="date" class="form-control" th:value="${student.getContractEnd()}">
+        </div>
+        <div>
+          <a class="btn" th:href="'/studentsList/' + ${schoolId}">Back</a><p><br/></p>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<div th:replace="~{fragments/scripts::scripts}"></div>
+</body>
+</html>
