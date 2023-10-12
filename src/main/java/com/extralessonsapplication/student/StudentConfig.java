@@ -9,13 +9,13 @@ import org.springframework.context.annotation.Configuration;
 import java.time.LocalDate;
 import java.util.List;
 
-@Configuration
+//@Configuration
 public class StudentConfig {
 
     @Bean
     CommandLineRunner studentCommandLineRunner(StudentRepository repository, SchoolRepository schoolRepository){
         return args -> {
-            SchoolEntity school1 = schoolRepository.findById(157L).orElse(null);
+            SchoolEntity school1 = schoolRepository.findById(1L).orElse(null);
 
             StudentEntity student1 = new StudentEntity(
                     "Olga",

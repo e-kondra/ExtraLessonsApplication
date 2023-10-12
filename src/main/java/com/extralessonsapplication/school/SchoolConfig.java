@@ -14,12 +14,14 @@ public class SchoolConfig {
     CommandLineRunner commandLineRunner(SchoolRepository repository){
         return args -> {
             SchoolEntity school1 = new SchoolEntity(
+                    1L,
                     "International School of Riga",
                     true,
                     "Kalnciema street 118, Riga",
                     "+371 67 624 622");
 
             SchoolEntity school2 = new SchoolEntity(
+                    2L,
                     "King’s College",
                     true,
                     "Turaidas street 1, Piņķi",

@@ -2,6 +2,7 @@ package com.extralessonsapplication.participation;
 
 import com.extralessonsapplication.lesson.LessonEntity;
 import com.extralessonsapplication.lesson.LessonService;
+import com.extralessonsapplication.student.StudentEntity;
 import com.extralessonsapplication.student.StudentService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

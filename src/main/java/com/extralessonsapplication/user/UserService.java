@@ -54,4 +54,12 @@ public class UserService {
     public ArrayList<UserEntity> getAllActiveTeachers(){
         return this.userRepository.findAllByRoleEqualsAndIsActiveTrue(UserRole.TEACHER);
     }
+
+    public Boolean isUserModerator(UserEntity user){
+        return user.getRole().toString().equals("MODERATOR");
+    }
+
+    public Boolean isUserTeacher(UserEntity user){
+        return user.getRole().toString().equals("TEACHER");
+    }
 }
