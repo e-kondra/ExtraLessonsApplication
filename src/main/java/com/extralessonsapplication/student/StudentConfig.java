@@ -4,7 +4,6 @@ import com.extralessonsapplication.school.SchoolEntity;
 import com.extralessonsapplication.school.SchoolRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -16,6 +15,7 @@ public class StudentConfig {
     CommandLineRunner studentCommandLineRunner(StudentRepository repository, SchoolRepository schoolRepository){
         return args -> {
             SchoolEntity school1 = schoolRepository.findById(1L).orElse(null);
+            SchoolEntity school2 = schoolRepository.findById(2L).orElse(null);
 
             StudentEntity student1 = new StudentEntity(
                     "Olga",
@@ -44,9 +44,99 @@ public class StudentConfig {
                     LocalDate.of(2024, 6, 15),
                     true
             );
+            StudentEntity student4 = new StudentEntity(
+                    "Ramune",
+                    "Pakalniskiene",
+                    "482297-11852",
+                    school1,
+                    LocalDate.of(2023, 9, 1),
+                    LocalDate.of(2024, 6, 15),
+                    true
+            );
+            StudentEntity student5 = new StudentEntity(
+                    "Rasa",
+                    "Valanciunaite",
+                    "673396-44297",
+                    school1,
+                    LocalDate.of(2023, 9, 1),
+                    LocalDate.of(2024, 6, 15),
+                    true
+            );
+            StudentEntity student6 = new StudentEntity(
+                    "Baiba",
+                    "Plavina",
+                    "592295-85295",
+                    school1,
+                    LocalDate.of(2023, 9, 1),
+                    LocalDate.of(2024, 6, 15),
+                    true
+            );
+            StudentEntity student7 = new StudentEntity(
+                    "Kitija",
+                    "Cietvira",
+                    "840038-63964",
+                    school1,
+                    LocalDate.of(2023, 9, 1),
+                    LocalDate.of(2024, 6, 15),
+                    true
+            );
+            StudentEntity student8 = new StudentEntity(
+                    "Nadezda",
+                    "Konovalova",
+                    "693306-74196",
+                    school1,
+                    LocalDate.of(2023, 9, 1),
+                    LocalDate.of(2024, 6, 15),
+                    true
+            );
+            StudentEntity student9 = new StudentEntity(
+                    "Agnese",
+                    "Smiltina",
+                    "503862-96385",
+                    school2,
+                    LocalDate.of(2023, 9, 1),
+                    LocalDate.of(2024, 6, 15),
+                    true
+            );
+            StudentEntity student10 = new StudentEntity(
+                    "Aleksandra",
+                    "Petkova-Verbiene",
+                    "953396-11753",
+                    school2,
+                    LocalDate.of(2023, 9, 1),
+                    LocalDate.of(2024, 6, 15),
+                    true
+            );
+            StudentEntity student11 = new StudentEntity(
+                    "Florina-Grațiela",
+                    "Nadoleanu",
+                    "740482-75395",
+                    school2,
+                    LocalDate.of(2023, 9, 1),
+                    LocalDate.of(2024, 6, 15),
+                    true
+            );
+            StudentEntity student12 = new StudentEntity(
+                    "Karolina",
+                    "Parmionova",
+                    "730863-85739",
+                    school2,
+                    LocalDate.of(2023, 9, 1),
+                    LocalDate.of(2024, 6, 15),
+                    true
+            );
+            StudentEntity student13 = new StudentEntity(
+                    "Vilma",
+                    "Jankune",
+                    "591185-85396",
+                    school2,
+                    LocalDate.of(2023, 9, 1),
+                    LocalDate.of(2024, 6, 15),
+                    true
+            );
 
             repository.saveAll(
-                    List.of(student1,student2,student3));
+                    List.of(student1,student2,student3,student4,student5,student6,student7,student8,student9,student10,student11,student12,student13));
         };
     }
 }

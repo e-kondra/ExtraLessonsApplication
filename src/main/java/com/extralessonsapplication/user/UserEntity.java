@@ -28,6 +28,19 @@ public class UserEntity {
     private Timestamp createdAt;
     private Timestamp updatedAt;
 
+    public UserEntity(String username, String password, String name, String lastname, UserRole role, String email, Boolean isActive, StudentEntity student, Timestamp createdAt, Timestamp updatedAt) {
+        this.username = username;
+        this.password = password;
+        this.name = name;
+        this.lastname = lastname;
+        this.role = role;
+        this.email = email;
+        this.isActive = isActive;
+        this.student = student;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
+
     @Override
     public String toString() {
         return name +" "+ lastname;
