@@ -8,6 +8,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.sql.Date;
+import java.util.Calendar;
 import java.util.Set;
 
 @Data
@@ -27,5 +28,14 @@ public class LessonEntity {
     private Boolean isActive;
     @OneToMany(mappedBy = "lesson")
     Set<Participation> participations;
+
+    public Boolean isDateAvailableToUpdate(){
+        Calendar instance = Calendar.getInstance();
+        instance.setTime(this.getDate());
+        instance.add(Calendar.DAY_OF_MONTH, 15);
+        java.util.Date dateToUpdate = instance.getTime();
+        return(dateToUpdate.compareTo(new java.util.Date()) >= 0);
+
+    }
 
 }

@@ -1,6 +1,7 @@
 package com.extralessonsapplication.lesson;
 
 import com.extralessonsapplication.participation.ParticipationService;
+import com.extralessonsapplication.school.Counter;
 import com.extralessonsapplication.school.SchoolEntity;
 import com.extralessonsapplication.school.SchoolService;
 import com.extralessonsapplication.student.StudentEntity;
@@ -28,7 +29,9 @@ public class LessonController {
     private final UserService userService;
     private final StudentService studentService;
     private final ParticipationService participationService;
-    private LessonService lessonService;
+    private final LessonService lessonService;
+    private Counter counter = new Counter();
+
     @Autowired // Dependency Injection
     public LessonController(SchoolService schoolService, LessonService lessonService, UserService userService, StudentService studentService, ParticipationService participationService){
         this.schoolService = schoolService;
@@ -36,6 +39,7 @@ public class LessonController {
         this.userService = userService;
         this.studentService = studentService;
         this.participationService = participationService;
+
     }
 
     @GetMapping("/lesson_create")
@@ -89,6 +93,7 @@ public class LessonController {
             LessonEntity lesson = this.lessonService.getLessonById(lessonId);
             UserEntity loggedInUser = this.userService.findUserById(Long.parseLong(userId));
 
+            model.addAttribute("counter", this.counter);
             model.addAttribute("lesson", lesson);
             model.addAttribute("schools", this.schoolService.getAllActiveSchools());
             model.addAttribute("teachers", this.userService.getAllActiveTeachers());
@@ -129,7 +134,10 @@ public class LessonController {
     }
 
     @GetMapping("/lessonsList/{id}")
-    public String displayLessonsListBySchool(@PathVariable("id") Long schoolId, HttpServletResponse response, HttpServletRequest request, Model model){
+    public String displayLessonsListBySchool(@PathVariable("id") Long schoolId,
+                                             HttpServletResponse response,
+                                             Model model,
+                                             @CookieValue(name = "loggedInUserId", defaultValue = "null") String userId){
         try {
             SchoolEntity school = this.schoolService.getSchoolById(schoolId);
             Cookie cookie = new Cookie("chosenSchoolId",schoolId.toString());
@@ -139,10 +147,9 @@ public class LessonController {
 
             model.addAttribute("chosenSchoolId", schoolId);
             model.addAttribute("school", school);
-            for (LessonEntity st :this.lessonService.getLessonsBySchool(school)){
-                System.out.println(st);
-            }
             model.addAttribute("lessons", this.lessonService.getLessonsBySchool(school));
+            model.addAttribute("teacher", this.userService.findUserById(Long.parseLong(userId)));
+            model.addAttribute("UpdateTime", LocalDate.now().plusWeeks(2));
             return "lessonsListBySchool";
         }catch (Exception e){
             return "redirect:/lessonsList/" +schoolId+ "?status=LESSON_UPDATING_FAILED&error" + e.getMessage();
@@ -162,6 +169,7 @@ public class LessonController {
                 model.addAttribute("chosenSchoolId", chosenSchoolId); // for header
                 model.addAttribute("currentSchool", this.schoolService.getSchoolById(Long.parseLong(chosenSchoolId)));
             }
+            model.addAttribute("counter", this.counter);
             return "lesson_view";
         }catch (Exception exception){
             return "redirect:/lessonsList?status=LESSON_VIEWING_FAILED&error" + exception.getMessage();

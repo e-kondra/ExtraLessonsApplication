@@ -77,13 +77,16 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="part: ${participations}" th:name="participation">
-          <td th:text="${part.getId()}"></td>
+        <tr th:each="part: ${participations}" th:name="participation" th:with="mycounter = ${counter.get()}">
+          <div th:with="mycounter=${counter.incrementAndGet()}">
+            <td th:text="${mycounter}"></td>
+          </div>
           <td th:text="${part.getStudent()}"></td>
           <td><input type="checkbox" th:name="${part.getId()}" th:checked="${part.isAttended()}"></td>
         </tr>
         </tbody>
       </table>
+    <div th:with="mycounter = ${counter.clear()}"></div>
     <div>
       <button type="submit" class="btn btn-two">Save</button><p><br/></p>
     </div>
