@@ -2,7 +2,12 @@
 <html lang="en" xmlns:form="http://www.w3.org/1999/html">
 <head th:replace="~{fragments/headers.html::head}"></head>
 <body>
-<header th:replace="~{fragments/headers.html::moderator_user_navbar}"></header>
+<div th:if="${isModerator}==true" >
+    <header th:replace="~{fragments/headers.html::moderator_user_navbar}"></header>
+</div>
+<div th:if="${isTeacher}==true">
+    <header th:replace="~{fragments/headers.html::teacher_user_navbar}"></header>
+</div>
 <header id="head" class="secondary">
     <div class="container">
         <h1>Student</h1>
@@ -15,31 +20,38 @@
             <h3 class="section-title">Please enter data</h3>
             <form class="form-light mt-20" role="form" action="/student_create" method="post">
                 <div class="form-group">
-                    <label>Name</label>
-                    <input name="name" type="text" class="form-control" placeholder="name">
+                    <label for="name">Name</label>
+                    <input id="name" name="name" type="text" class="form-control" placeholder="name" required>
                 </div>
                 <div class="form-group">
-                    <label>Last name</label>
-                    <input name="lastName" type="text" class="form-control" placeholder="last name">
+                    <label for="lastName">Last name</label>
+                    <input id="lastName" name="lastName" type="text" class="form-control" placeholder="last name" required>
                 </div>
                 <div class="form-group">
-                    <label>Personal code</label>
-                    <input name="personalCode" type="text" class="form-control" placeholder="personal code">
+                    <label for="personalCode">Personal code</label>
+                    <input id="personalCode" name="personalCode" type="text" class="form-control" placeholder="personal code" required>
                 </div>
                 <div class="form-group">
-                    <label>School</label>
-                    <select class="form-control" name="school">
-                        <option value="0">--Please choose an option--</option>
-                        <option th:each="school : ${schools}" th:value="${school.getId()}" th:text="${school.getName()}"></option>
-                    </select>
+                    <div th:if="${isModerator}==true">
+                        <label for="school">School</label>
+                        <select id="school" class="form-control" name="school">
+                            <option th:each="school : ${schools}" th:value="${school.getId()}" th:text="${school.getName()}"></option>
+                        </select>
+                    </div>
+                    <div th:if="${isTeacher}==true">
+                        <label for="school_">School</label>
+                        <select readonly="true" id="school_" class="form-control" name="school">
+                            <option selected="true" th:value="${currentSchool.getId()}" th:text="${currentSchool.getName()}"></option>
+                        </select>
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label>Contract begin</label>
-                    <input name="contractBegin" type="date" class="form-control" placeholder="contact begin">
+                    <label for="contractBegin">Contract begin</label>
+                    <input id="contractBegin" name="contractBegin" type="date" class="form-control" placeholder="contact begin">
                 </div>
                 <div class="form-group">
-                    <label>Contract end</label>
-                    <input name="contractEnd" type="date" class="form-control" placeholder="contact end">
+                    <label for="contractEnd">Contract end</label>
+                    <input id="contractEnd" name="contractEnd" type="date" class="form-control" placeholder="contact end">
                 </div>
 
                 <button type="submit" class="btn btn-two">Submit</button><p><br/></p>

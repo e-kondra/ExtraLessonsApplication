@@ -19,8 +19,7 @@
                     <th scope="col">Date</th>
                     <th scope="col">Title</th>
                     <th scope="col">Teacher</th>
-                    <th scope="col">View/Update</th>
-<!--                    <th>Test date</th>-->
+                    <th scope="col">Update</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -28,10 +27,8 @@
                     <td th:text="${lesson.getDate()}"></td>
                     <td><a th:text="${lesson.getTitle()}" th:href="'/lesson_view/' + ${lesson.getId()}"></a></td>
                     <td th:text="${lesson.getTeacher()}"></td>
-                    <td th:if="${lesson.getTeacher() == teacher && lesson.isDateAvailableToUpdate()}"><a class="btn" th:href="'/lesson_update/' + ${lesson.getId()}">Update</a>
+                    <td th:if="${lesson.getTeacher() == teacher && lesson.isDateAvailableToUpdate()}"><a th:href="'/lesson_update/' + ${lesson.getId()}">Update</a>
                     <td th:if="${lesson.getTeacher() != teacher}"> </td>
-<!--                    <td th:text="${lesson.isDateAvailableToUpdate()}">Available</td>-->
-<!--&lt;!&ndash;                    <td th:if="${lesson.getDate().before(UpdateTime)}"></td>&ndash;&gt;-->
                 </tr>
                 </tbody>
             </table>
