@@ -4,11 +4,12 @@ import com.extralessonsapplication.school.SchoolEntity;
 import com.extralessonsapplication.school.SchoolRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 
 import java.time.LocalDate;
 import java.util.List;
 
-//@Configuration
+@Configuration
 public class StudentConfig {
 
     @Bean
@@ -18,6 +19,7 @@ public class StudentConfig {
             SchoolEntity school2 = schoolRepository.findById(2L).orElse(null);
 
             StudentEntity student1 = new StudentEntity(
+                    1L,
                     "Olga",
                     "Vinogradova",
                     "122145-12542",
@@ -27,6 +29,7 @@ public class StudentConfig {
                     true
             );
             StudentEntity student2 = new StudentEntity(
+                    2L,
                     "Ekaterina",
                     "Kondratyeva",
                     "763424-16326",
@@ -36,6 +39,7 @@ public class StudentConfig {
                     true
             );
             StudentEntity student3 = new StudentEntity(
+                    3L,
                     "Valeria",
                     "Zalygina",
                     "452264-22531",
@@ -45,6 +49,7 @@ public class StudentConfig {
                     true
             );
             StudentEntity student4 = new StudentEntity(
+                    4L,
                     "Ramune",
                     "Pakalniskiene",
                     "482297-11852",
@@ -54,6 +59,7 @@ public class StudentConfig {
                     true
             );
             StudentEntity student5 = new StudentEntity(
+                    5L,
                     "Rasa",
                     "Valanciunaite",
                     "673396-44297",
@@ -63,6 +69,7 @@ public class StudentConfig {
                     true
             );
             StudentEntity student6 = new StudentEntity(
+                    6L,
                     "Baiba",
                     "Plavina",
                     "592295-85295",
@@ -72,6 +79,7 @@ public class StudentConfig {
                     true
             );
             StudentEntity student7 = new StudentEntity(
+                    7L,
                     "Kitija",
                     "Cietvira",
                     "840038-63964",
@@ -81,6 +89,7 @@ public class StudentConfig {
                     true
             );
             StudentEntity student8 = new StudentEntity(
+                    8L,
                     "Nadezda",
                     "Konovalova",
                     "693306-74196",
@@ -90,6 +99,7 @@ public class StudentConfig {
                     true
             );
             StudentEntity student9 = new StudentEntity(
+                    9L,
                     "Agnese",
                     "Smiltina",
                     "503862-96385",
@@ -99,6 +109,7 @@ public class StudentConfig {
                     true
             );
             StudentEntity student10 = new StudentEntity(
+                    10L,
                     "Aleksandra",
                     "Petkova-Verbiene",
                     "953396-11753",
@@ -108,6 +119,7 @@ public class StudentConfig {
                     true
             );
             StudentEntity student11 = new StudentEntity(
+                    11L,
                     "Florina-Grațiela",
                     "Nadoleanu",
                     "740482-75395",
@@ -117,6 +129,7 @@ public class StudentConfig {
                     true
             );
             StudentEntity student12 = new StudentEntity(
+                    12L,
                     "Karolina",
                     "Parmionova",
                     "730863-85739",
@@ -126,6 +139,7 @@ public class StudentConfig {
                     true
             );
             StudentEntity student13 = new StudentEntity(
+                    13L,
                     "Vilma",
                     "Jankune",
                     "591185-85396",
