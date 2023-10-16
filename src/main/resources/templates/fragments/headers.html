@@ -185,13 +185,14 @@
                             <li><a href="/lesson_create">New Lesson</a></li>
                         </ul>
                     </li>
-                    <li th:if="${chosenSchoolId}" class="c3 dropdown">
+                    <li th:if="${chosenSchoolId}" class="c2 dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown">Students <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li><a th:href="'/studentsList/' + ${chosenSchoolId}">All Students</a></li>
                             <li><a href="/student_create">New Student</a></li>
                         </ul>
                     </li>
+                    <li th:if="${chosenSchoolId}" class="c4"><a href="/calculation">Calculation</a></li>
                     <li class="c6"><a href="/logout">Logout</a></li>
                 </ul>
             </div>
