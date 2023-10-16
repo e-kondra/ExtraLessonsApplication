@@ -4,7 +4,9 @@ import com.extralessonsapplication.participation.ParticipationService;
 import com.extralessonsapplication.school.SchoolEntity;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 @Service
 public class LessonService {
@@ -40,4 +42,6 @@ public class LessonService {
         return (ArrayList<LessonEntity>) this.lessonRepository
                 .findAllBySchoolEqualsAndIsActiveTrue(school);
     }
+
+
 }

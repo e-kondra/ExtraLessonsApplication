@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
 import java.util.List;
 
 
-@Configuration
+//@Configuration
 public class ParticipationConfig {
     @Bean
     CommandLineRunner participationCommandLineRunner(ParticipationRepository repository, StudentRepository

@@ -25,29 +25,33 @@
           <th scope="col" th:text="${months[6]}"></th>
           <th scope="col" th:text="${months[7]}"></th>
           <th scope="col" th:text="${months[8]}"></th>
+          <th scope="col" th:text="${months[9]}"></th>
         </tr>
         </thead>
         <tbody>
         <tr th:each="student: ${studentsAmount}">
           <td th:text="${student.student}"></td>
-          <td><a th:if="${student.amounts[0]}>0" th:text="${student.amounts[0]}"
-                 th:href="'/student_calculation/' + ${student.student.getId()} + '/' + ${monthsSeq[0]}"></a></td>
+          <td>
+          <a th:if="${student.amounts[0]}>0" th:text="${student.amounts[0]}"
+                 th:href="'/invoice/' + ${student.student.getId()} + '/' + ${monthsSeq[0]} + '/' + ${yearsSeq[0]}"></a></td>
           <td><a th:if="${student.amounts[1]}>0" th:text="${student.amounts[1]}"
-                 th:href="'/student_calculation/' + ${student.student.getId()} + '/' + ${monthsSeq[1]}"></a></td>
+                 th:href="'/invoice/' + ${student.student.getId()} + '/' + ${monthsSeq[1]} + '/' + ${yearsSeq[1]}" ></a></td>
           <td><a th:if="${student.amounts[2]}>0" th:text="${student.amounts[2]}"
-                 th:href="'/student_calculation/' + ${student.student.getId()} + '/' + ${monthsSeq[2]}" ></a></td>
+                 th:href="'/invoice/' + ${student.student.getId()} + '/' + ${monthsSeq[2]} + '/' + ${yearsSeq[2]}" ></a></td>
           <td><a th:if="${student.amounts[3]}>0" th:text="${student.amounts[3]}"
-                 th:href="'/student_calculation/' + ${student.student.getId()} + '/' + ${monthsSeq[3]}"></a></td>
+                 th:href="'/invoice/' + ${student.student.getId()} + '/' + ${monthsSeq[3]} + '/' + ${yearsSeq[3]}"></a></td>
           <td><a th:if="${student.amounts[4]}>0" th:text="${student.amounts[4]}"
-                 th:href="'/student_calculation/' + ${student.student.getId()} + '/' + ${monthsSeq[4]}"></a></td>
+                 th:href="'/invoice/' + ${student.student.getId()} + '/' + ${monthsSeq[4]} + '/' + ${yearsSeq[4]}"></a></td>
           <td><a th:if="${student.amounts[5]}>0" th:text="${student.amounts[5]}"
-                 th:href="'/student_calculation/' + ${student.student.getId()} + '/' + ${monthsSeq[5]}"></a></td>
+                 th:href="'/invoice/' + ${student.student.getId()} + '/' + ${monthsSeq[5]} + '/' + ${yearsSeq[5]}"></a></td>
           <td><a th:if="${student.amounts[6]}>0" th:text="${student.amounts[6]}"
-                 th:href="'/student_calculation/' + ${student.student.getId()} + '/' + ${monthsSeq[6]}"></a></td>
+                 th:href="'/invoice/' + ${student.student.getId()} + '/' + ${monthsSeq[6]} + '/' + ${yearsSeq[6]}"></a></td>
           <td><a th:if="${student.amounts[7]}>0" th:text="${student.amounts[7]}"
-                 th:href="'/student_calculation/' + ${student.student.getId()} + '/' + ${monthsSeq[7]}"></a></td>
+                 th:href="'/invoice/' + ${student.student.getId()} + '/' + ${monthsSeq[7]} + '/' + ${yearsSeq[7]}"></a></td>
           <td><a th:if="${student.amounts[8]}>0" th:text="${student.amounts[8]}"
-                 th:href="'/student_calculation/' + ${student.student.getId()} + '/' + ${monthsSeq[8]}"></a></td>
+                 th:href="'/invoice/' + ${student.student.getId()} + '/' + ${monthsSeq[8]}  + '/' + ${yearsSeq[8]}"></a></td>
+          <td><a th:if="${student.amounts[9]}>0" th:text="${student.amounts[9]}"
+                 th:href="'/invoice/' + ${student.student.getId()} + '/' + ${monthsSeq[9]}  + '/' + ${yearsSeq[9]}"></a></td>
         </tr>
         </tbody>
       </table>

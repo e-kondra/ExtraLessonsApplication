@@ -2,8 +2,10 @@ package com.extralessonsapplication.participation;
 
 import com.extralessonsapplication.lesson.LessonEntity;
 import com.extralessonsapplication.lesson.LessonService;
+import com.extralessonsapplication.school.Counter;
 import com.extralessonsapplication.school.SchoolEntity;
 import com.extralessonsapplication.school.SchoolService;
+import com.extralessonsapplication.student.StudentEntity;
 import com.extralessonsapplication.student.StudentService;
 import com.extralessonsapplication.user.UserEntity;
 import com.extralessonsapplication.user.UserService;
@@ -12,6 +14,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.Month;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -24,6 +28,7 @@ public class ParticipationController {
     private final SchoolService schoolService;
     private final UserService userService;
     private Map<Integer,Integer> monthSequence = new LinkedHashMap<>();
+    private Counter counter = new Counter();
 
 
     public ParticipationController(ParticipationService participationService, LessonService lessonService, StudentService studentService, SchoolService schoolService, UserService userService) {
@@ -45,6 +50,7 @@ public class ParticipationController {
         this.monthSequence.put(3, 2024);
         this.monthSequence.put(4, 2024);
         this.monthSequence.put(5, 2024);
+        this.monthSequence.put(6, 2024);
     }
 
     @GetMapping("/participations_create/{lessonId}")
@@ -84,15 +90,34 @@ public class ParticipationController {
             model.addAttribute("chosenSchoolId", chosenSchoolId); // for header
             model.addAttribute("months", this.participationService.getMonthSequence(this.monthSequence));
             model.addAttribute("monthsSeq", this.participationService.getMonthSequenceInt(this.monthSequence));
+            model.addAttribute("yearsSeq", this.participationService.getYearSequenceInt(this.monthSequence));
             return "calculation";
         } catch (Exception exception){
             return "redirect:/calculation?status=CALCULATION_FAILED&error" + exception.getMessage();
         }
     }
 
-//    @GetMapping("/invoice")
-//    public String displayInvoice(){
-//        return "invoice";
-//    }
+    @GetMapping("/invoice/{id}/{month}/{year}")
+    public String displayInvoice(@PathVariable("id") Long studentId,
+                                 @PathVariable() int month,
+                                 @PathVariable() int year,
+                                 Model model){
+        try {
+            StudentEntity student = this.studentService.findStudentById(studentId);
+            model.addAttribute("counter", this.counter);
+            model.addAttribute("participations", this.participationService.getStudentMonthParticipation(student, month, year));
+            model.addAttribute("amount", this.participationService.getSummaryForStudentByMonth(student, month, year));
+            model.addAttribute("student", student);
+            model.addAttribute("parent", this.userService.findUserByStudent(student));
+            model.addAttribute("monthYear", Month.of(month) + " " + year);
+            return "invoice";
+        }catch (Exception exception){
+            return "redirect:/calculation?status=INVOICE_FAILED&error" + exception.getMessage();
+        }
+    }
+    @GetMapping("/invoice")
+    public String displayInvoice2(){
+        return "invoice";
+    }
 
 }

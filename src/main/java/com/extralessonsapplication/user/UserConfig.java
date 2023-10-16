@@ -36,7 +36,7 @@ public class UserConfig {
 
             UserEntity user1 = new UserEntity(
                     1L,
-                    "ZinoAdidi",
+                    "zino",
                     "12345",
                     "Zino",
                     "Adidi",

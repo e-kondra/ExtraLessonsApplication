@@ -121,4 +121,11 @@ public class ParticipationService {
         }
         return monthsInt;
     }
+    public ArrayList<Integer> getYearSequenceInt(Map<Integer, Integer> monthSequence) {
+        ArrayList<Integer> yearsInt = new ArrayList<>();
+        for(Integer value: monthSequence.values()){
+            yearsInt.add(value);
+        }
+        return yearsInt;
+    }
 }
