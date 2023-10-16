@@ -6,11 +6,8 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.List;
 
-@Configuration
 public class SchoolConfig {
-    @Bean
-    CommandLineRunner commandLineRunner(SchoolRepository repository){
-        return args -> {
+    public void commandLineRunner(SchoolRepository repository) {
             SchoolEntity school1 = new SchoolEntity(
                     1L,
                     "International School of Riga",
@@ -57,4 +54,4 @@ public class SchoolConfig {
                     List.of(school1, school2, school3, school4, school5, school6));
         };
     }
-}
+
