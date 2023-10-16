@@ -29,13 +29,6 @@ public class LessonEntity {
     @OneToMany(mappedBy = "lesson")
     Set<Participation> participations;
 
-    public Boolean isDateAvailableToUpdate(){
-        Calendar instance = Calendar.getInstance();
-        instance.setTime(Date.valueOf(this.date.toLocalDate()));
-        instance.add(Calendar.DAY_OF_MONTH, 15);
-        java.util.Date dateToUpdate = instance.getTime();
-        return(dateToUpdate.compareTo(new java.util.Date()) >= 0);
-    }
 
     public LessonEntity(Long id, Date date, String title, String comment, UserEntity teacher, SchoolEntity school, Boolean isActive) {
         this.id = id;
@@ -45,5 +38,13 @@ public class LessonEntity {
         this.teacher = teacher;
         this.school = school;
         this.isActive = isActive;
+    }
+
+    public Boolean isDateAvailableToUpdate(){
+        Calendar instance = Calendar.getInstance();
+        instance.setTime(Date.valueOf(date.toLocalDate()));
+        instance.add(Calendar.DAY_OF_MONTH, 15);
+        java.util.Date dateToUpdate = instance.getTime();
+        return(dateToUpdate.compareTo(new java.util.Date()) >= 0);
     }
 }

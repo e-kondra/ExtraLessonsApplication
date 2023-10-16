@@ -27,8 +27,7 @@
                     <td th:text="${lesson.getDate()}"></td>
                     <td><a th:text="${lesson.getTitle()}" th:href="'/lesson_view/' + ${lesson.getId()}"></a></td>
                     <td th:text="${lesson.getTeacher()}"></td>
-                    <td th:if="${lesson.getTeacher() == teacher && lesson.isDateAvailableToUpdate()}"><a th:href="'/lesson_update/' + ${lesson.getId()}">Update</a>
-                    <td th:if="${lesson.getTeacher() != teacher}"> </td>
+                    <td><a th:if="${lesson.getTeacher()==teacher && lesson.isDateAvailableToUpdate()==true}" th:href="'/lesson_update/' + ${lesson.getId()}">Update</a></td>
                 </tr>
                 </tbody>
             </table>
