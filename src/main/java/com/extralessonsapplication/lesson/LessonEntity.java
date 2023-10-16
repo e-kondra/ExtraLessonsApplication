@@ -8,7 +8,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.sql.Date;
-import java.time.LocalDate;
 import java.util.Calendar;
 import java.util.Set;
 
@@ -19,7 +18,7 @@ import java.util.Set;
 public class LessonEntity {
     @Id @GeneratedValue
     private Long id;
-    private LocalDate date;
+    private Date date;
     private String title;
     private String comment;
     @ManyToOne
@@ -32,13 +31,13 @@ public class LessonEntity {
 
     public Boolean isDateAvailableToUpdate(){
         Calendar instance = Calendar.getInstance();
-        instance.setTime(Date.valueOf(this.date));
+        instance.setTime(Date.valueOf(this.date.toLocalDate()));
         instance.add(Calendar.DAY_OF_MONTH, 15);
         java.util.Date dateToUpdate = instance.getTime();
         return(dateToUpdate.compareTo(new java.util.Date()) >= 0);
     }
 
-    public LessonEntity(Long id, LocalDate date, String title, String comment, UserEntity teacher, SchoolEntity school, Boolean isActive) {
+    public LessonEntity(Long id, Date date, String title, String comment, UserEntity teacher, SchoolEntity school, Boolean isActive) {
         this.id = id;
         this.date = date;
         this.title = title;

@@ -1,5 +1,7 @@
 package com.extralessonsapplication.student;
 
+import com.extralessonsapplication.lesson.LessonEntity;
+import com.extralessonsapplication.lesson.LessonRepository;
 import com.extralessonsapplication.school.SchoolEntity;
 import com.extralessonsapplication.school.SchoolRepository;
 import org.springframework.boot.CommandLineRunner;
@@ -9,12 +11,12 @@ import org.springframework.context.annotation.Configuration;
 import java.time.LocalDate;
 import java.util.List;
 
-@Configuration
+//@Configuration
 public class StudentConfig {
 
-    @Bean
-    CommandLineRunner studentCommandLineRunner(StudentRepository repository, SchoolRepository schoolRepository){
-        return args -> {
+
+    public void studentCommandLineRunner(StudentRepository repository, SchoolRepository schoolRepository)
+{
             SchoolEntity school1 = schoolRepository.findById(1L).orElse(null);
             SchoolEntity school2 = schoolRepository.findById(2L).orElse(null);
 
@@ -151,6 +153,7 @@ public class StudentConfig {
 
             repository.saveAll(
                     List.of(student1,student2,student3,student4,student5,student6,student7,student8,student9,student10,student11,student12,student13));
+
         };
     }
-}
+

@@ -1,19 +1,24 @@
 package com.extralessonsapplication.user;
 
+import com.extralessonsapplication.lesson.LessonEntity;
+import com.extralessonsapplication.lesson.LessonRepository;
 import com.extralessonsapplication.school.SchoolEntity;
+import com.extralessonsapplication.school.SchoolRepository;
 import com.extralessonsapplication.student.StudentEntity;
 import com.extralessonsapplication.student.StudentRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.time.LocalDate;
 import java.util.List;
 
-@Configuration
+//@Configuration
 public class UserConfig {
-    @Bean
-    CommandLineRunner userCommandLineRunner(UserRepository repository, StudentRepository studentRepository){
-        return args -> {
+
+    public void userCommandLineRunner(UserRepository repository,
+                                      StudentRepository studentRepository)
+{
             StudentEntity student1 = studentRepository.findById(1L).orElse(null);
             StudentEntity student2 = studentRepository.findById(2L).orElse(null);
             StudentEntity student3 = studentRepository.findById(3L).orElse(null);
@@ -32,7 +37,7 @@ public class UserConfig {
             UserEntity user1 = new UserEntity(
                     1L,
                     "ZinoAdidi",
-                    "shegoestech",
+                    "12345",
                     "Zino",
                     "Adidi",
                     UserRole.TEACHER,
@@ -45,7 +50,7 @@ public class UserConfig {
             UserEntity user2 = new UserEntity(
                     2L,
                     "Karlis123",
-                    "shegoestech1",
+                    "12345",
                     "Karlis",
                     "Zars",
                     UserRole.TEACHER,
@@ -58,7 +63,7 @@ public class UserConfig {
             UserEntity user3 = new UserEntity(
                     3L,
                     "moderator",
-                    "SGTModerator",
+                    "12345",
                     "moderator",
                     "moderator",
                     UserRole.MODERATOR,
@@ -71,7 +76,7 @@ public class UserConfig {
             UserEntity user4 = new UserEntity(
                     4L,
                     "122145-12542",
-                    "Robotica1A",
+                    "12345",
                     "Iveta",
                     "Vinogradova",
                     UserRole.PARENT,
@@ -240,6 +245,8 @@ public class UserConfig {
 
             repository.saveAll(
                     List.of(user1,user2,user3,user4,user5,user6,user7,user8,user9,user10,user11,user12,user13,user14,user15,user16));
+
+
+
         };
     }
-}
