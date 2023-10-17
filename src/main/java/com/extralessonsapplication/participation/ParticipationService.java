@@ -10,6 +10,8 @@ import java.time.Month;
 import java.time.YearMonth;
 import java.util.ArrayList;
 import java.sql.Date;
+import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 @Service
@@ -121,11 +123,32 @@ public class ParticipationService {
         }
         return monthsInt;
     }
+
     public ArrayList<Integer> getYearSequenceInt(Map<Integer, Integer> monthSequence) {
         ArrayList<Integer> yearsInt = new ArrayList<>();
-        for(Integer value: monthSequence.values()){
+        for (Integer value : monthSequence.values()) {
             yearsInt.add(value);
         }
         return yearsInt;
+    }
+
+    public ArrayList<MonthlyStudentParticipations> getMonthlyStudentParticipations(
+            StudentEntity student,
+            LinkedHashMap<Integer, Integer> monthYear){
+        ArrayList<MonthlyStudentParticipations> monthlyStudentParticipations = new ArrayList<>();
+        for (Map.Entry<Integer, Integer> my : monthYear.entrySet()){
+            if(this.getSummaryForStudentByMonth(student, my.getKey(), my.getValue()) > 0){
+                MonthlyStudentParticipations msp = new MonthlyStudentParticipations();
+                msp.setMonth(my.getKey());
+                msp.setYear(my.getValue());
+                msp.setMonthStr(Month.of(my.getKey()).toString());
+                msp.setAmount(this.getSummaryForStudentByMonth(student, my.getKey(), my.getValue()));
+                ArrayList monthPart = this.getStudentMonthParticipation(student, my.getKey(), my.getValue());
+                msp.setParticipations(monthPart);
+                monthlyStudentParticipations.add(msp);
+            }
+        }
+        Collections.reverse(monthlyStudentParticipations);
+        return monthlyStudentParticipations;
     }
 }

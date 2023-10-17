@@ -3,6 +3,7 @@ package com.extralessonsapplication.student;
 import com.extralessonsapplication.school.SchoolEntity;
 import com.extralessonsapplication.school.SchoolService;
 import com.extralessonsapplication.user.UserEntity;
+import com.extralessonsapplication.user.UserRole;
 import com.extralessonsapplication.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -66,10 +67,17 @@ public class StudentController {
 
     @PostMapping("/student_create")
     public String handleStudentCreating(StudentEntity studentEntity,
-                                        @CookieValue(name = "chosenSchoolId", defaultValue = "null") String chosenSchoolId){
+                                        @CookieValue(name = "chosenSchoolId", defaultValue = "null") String chosenSchoolId,
+                                        @CookieValue(name = "loggedInUserId", defaultValue = "null") String loggedInUserId){
         try {
             studentEntity.setIsActive(true);
-            this.studentService.createStudent(studentEntity);
+            UserEntity user = this.userService.findUserById(Long.parseLong(loggedInUserId));
+            studentEntity = this.studentService.createStudent(studentEntity);
+            System.out.println(studentEntity.getId());
+            if(user.getRole()== UserRole.TEACHER){
+                System.out.println(user.getRole().toString());
+                this.studentService.createParentByTeacher(studentEntity);
+            }
             if(!chosenSchoolId.isBlank()||!chosenSchoolId.isEmpty()) {
                 return "redirect:/studentsList/" + chosenSchoolId + "?status=STUDENT_CREATION_SUCCESS";
             }

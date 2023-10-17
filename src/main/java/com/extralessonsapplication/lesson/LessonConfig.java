@@ -131,7 +131,7 @@ public class LessonConfig {
                     103L,
                     java.sql.Date.valueOf(LocalDate.of(2023, 9, 22)),
                     "Robot Friends: How Robots Communicate",
-                    "RRobots have their own way of talking to each other. We'll explore how robots communicate " +
+                    "Robots have their own way of talking to each other. We'll explore how robots communicate " +
                             "and create art with 3D pens",
                     teacher2,
                     school2,

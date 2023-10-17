@@ -45,7 +45,7 @@ public class UserController {
             response.addCookie(cookie);
             switch (user.getRole().toString()){
                 case "MODERATOR" -> {return "redirect:/moderator?status=LOGIN_SUCCESS";}
-                case "PARENT" -> {return "redirect:/lessonsList?status=LOGIN_SUCCESS";}
+                case "PARENT" -> {return "redirect:/students_participations?status=LOGIN_SUCCESS";}
                 case "TEACHER" -> {return "redirect:/teacher?status=LOGIN_SUCCESS";}
 
             }

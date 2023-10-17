@@ -14,26 +14,34 @@ public class StudentService {
     private UserService userService;
     private StudentRepository studentRepository;
 
-    public StudentService(StudentRepository studentRepository){
+    public StudentService(StudentRepository studentRepository, UserService userService){
         this.studentRepository=studentRepository;
-        this.userService=userService;
+        this.userService = userService;
     }
 
-    public void createStudent(StudentEntity studentEntity) throws Exception{
-        this.studentRepository.save(studentEntity);
+//    public void createStudent(StudentEntity studentEntity) throws Exception{
+//        this.studentRepository.save(studentEntity);
+//    }
+    public StudentEntity createStudent(StudentEntity studentEntity) throws Exception{
+        return this.studentRepository.save(studentEntity);
     }
     public ArrayList<StudentEntity> getAllStudents() {return (ArrayList<StudentEntity>) this.studentRepository.findAll();
     }
 
     public void createParentByTeacher(StudentEntity studentEntity) throws Exception{
+
         Optional<UserEntity> parent = Optional.ofNullable(this.userService.findUserByStudent(studentEntity));
-        if(parent.isEmpty()){ //parent creation
+        System.out.println(parent.isEmpty());
+        System.out.println(parent.isPresent());
+        if(parent.isEmpty()==true){ //parent creation
+            System.out.println("parent is empty");
             UserEntity userParent = new UserEntity();
             userParent.setRole(UserRole.PARENT);
             userParent.setUsername(studentEntity.getPersonalCode());
             userParent.setPassword("12345");
             userParent.setIsActive(true);
             userParent.setStudent(studentEntity);
+            System.out.println(userParent);
             this.userService.createUser(userParent);
         } else {
             UserEntity userParent = this.userService.findUserByStudent(studentEntity);
