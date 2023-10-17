@@ -11,5 +11,5 @@ import java.util.ArrayList;
 public class MonthlyStudentAmount {
     private Long id;
     private StudentEntity student;
-    private ArrayList<Integer> amounts;  // from 9 to 12, 1-5 months
+    private ArrayList<Integer> amounts;  // from 9 to 12, from 1 to 6 months
 }

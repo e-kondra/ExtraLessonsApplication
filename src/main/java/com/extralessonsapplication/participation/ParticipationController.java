@@ -115,9 +115,22 @@ public class ParticipationController {
             return "redirect:/calculation?status=INVOICE_FAILED&error" + exception.getMessage();
         }
     }
-    @GetMapping("/invoice")
-    public String displayInvoice2(){
-        return "invoice";
+    @GetMapping("/students_participations")
+    public String displayStudentParticipation( Model model,
+                            @CookieValue(name = "loggedInUserId", defaultValue = "null") String loggedInUserId){
+        try {
+            UserEntity parent = this.userService.findUserById(Long.parseLong(loggedInUserId));
+            StudentEntity student = parent.getStudent();
+            model.addAttribute("student", student);
+            model.addAttribute("counter", this.counter);
+            model.addAttribute("monthPart",
+                    this.participationService.getMonthlyStudentParticipations(student,
+                            (LinkedHashMap<Integer, Integer>) this.monthSequence));
+            return "/students_participations";
+
+        } catch (Exception e){
+            return "redirect:/students_participation?status=STUDENT_PARTICIPATION_FAILED&error" + e.getMessage();
+        }
     }
 
 }
