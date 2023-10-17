@@ -5,19 +5,15 @@ import com.extralessonsapplication.lesson.LessonEntity;
 import com.extralessonsapplication.lesson.LessonRepository;
 import com.extralessonsapplication.student.StudentEntity;
 import com.extralessonsapplication.student.StudentRepository;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+
 
 import java.util.List;
 
 
-//@Configuration
 public class ParticipationConfig {
-    @Bean
-    CommandLineRunner participationCommandLineRunner(ParticipationRepository repository, StudentRepository
-            studentRepository, LessonRepository lessonRepository) {
-        return args -> {
+
+    public void participationCommandLineRunner(ParticipationRepository repository,
+            StudentRepository studentRepository, LessonRepository lessonRepository){
             StudentEntity student1 = studentRepository.findById(1L).orElse(null);
             StudentEntity student2 = studentRepository.findById(2L).orElse(null);
             StudentEntity student3 = studentRepository.findById(3L).orElse(null);
@@ -40,7 +36,6 @@ public class ParticipationConfig {
             LessonEntity lesson6 = lessonRepository.findById(6L).orElse(null);
             LessonEntity lesson7 = lessonRepository.findById(7L).orElse(null);
             LessonEntity lesson8 = lessonRepository.findById(8L).orElse(null);
-            LessonEntity lesson9 = lessonRepository.findById(9L).orElse(null);
             LessonEntity lesson101 = lessonRepository.findById(101L).orElse(null);
             LessonEntity lesson102 = lessonRepository.findById(102L).orElse(null);
             LessonEntity lesson103 = lessonRepository.findById(103L).orElse(null);
@@ -49,7 +44,6 @@ public class ParticipationConfig {
             LessonEntity lesson106 = lessonRepository.findById(106L).orElse(null);
             LessonEntity lesson107 = lessonRepository.findById(107L).orElse(null);
             LessonEntity lesson108 = lessonRepository.findById(108L).orElse(null);
-            LessonEntity lesson109 = lessonRepository.findById(109L).orElse(null);
 
 
 
@@ -165,21 +159,6 @@ public class ParticipationConfig {
             Participation participation103 = new Participation(103L, student12, lesson108, true);
             Participation participation104 = new Participation(104L, student13, lesson108, true);
 
-            Participation participation105 = new Participation(105L, student1, lesson9, true);
-            Participation participation106 = new Participation(106L, student2, lesson9, true);
-            Participation participation107 = new Participation(107L, student3, lesson9, true);
-            Participation participation108 = new Participation(108L, student4, lesson9, true);
-            Participation participation109 = new Participation(109L, student5, lesson9, false);
-            Participation participation110 = new Participation(110L, student6, lesson9, true);
-            Participation participation111 = new Participation(111L, student7, lesson9, true);
-            Participation participation112 = new Participation(112L, student8, lesson9, true);
-            Participation participation113 = new Participation(113L, student9, lesson109, true);
-            Participation participation114 = new Participation(114L, student10, lesson109, false);
-            Participation participation115 = new Participation(115L, student11, lesson109, true);
-            Participation participation116 = new Participation(116L, student12, lesson109, true);
-            Participation participation117 = new Participation(117L, student13, lesson109, true);
-
-
 
             repository.saveAll(
                     List.of(
@@ -203,12 +182,8 @@ public class ParticipationConfig {
                             participation86,participation87 , participation88,participation89,participation90,
                             participation91,participation92,participation93,participation94,participation95,
                             participation96,participation97, participation98,participation99,participation100,
-                            participation101,participation102,participation103,participation104,participation105,
-                            participation106,participation107,participation108,participation109,participation110,
-                            participation111,participation112,participation113,participation114,participation115,
-                            participation116,participation117
+                            participation101,participation102,participation103,participation104
                             ));
         };
 
     }
-}

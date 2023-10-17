@@ -2,6 +2,8 @@ package com.extralessonsapplication;
 
 import com.extralessonsapplication.lesson.LessonConfig;
 import com.extralessonsapplication.lesson.LessonRepository;
+import com.extralessonsapplication.participation.ParticipationConfig;
+import com.extralessonsapplication.participation.ParticipationRepository;
 import com.extralessonsapplication.school.SchoolConfig;
 import com.extralessonsapplication.school.SchoolRepository;
 import com.extralessonsapplication.student.StudentConfig;
@@ -18,7 +20,8 @@ public class MainConfig {
     CommandLineRunner userCommandLineRunner(UserRepository userRepository,
                                             StudentRepository studentRepository,
                                             LessonRepository lessonRepository,
-                                            SchoolRepository schoolRepository){
+                                            SchoolRepository schoolRepository,
+                                            ParticipationRepository participationRepository){
         return args -> {
             SchoolConfig schoolConfig = new SchoolConfig();
             schoolConfig.commandLineRunner(schoolRepository);
@@ -28,6 +31,9 @@ public class MainConfig {
             userConfig.userCommandLineRunner(userRepository, studentRepository );
             LessonConfig lessonConfig = new LessonConfig();
             lessonConfig.lessonCommandLineRunner(lessonRepository, userRepository, schoolRepository);
+            ParticipationConfig participationConfig = new ParticipationConfig();
+            participationConfig.participationCommandLineRunner(participationRepository,
+            studentRepository, lessonRepository);
         };
     }
 }
