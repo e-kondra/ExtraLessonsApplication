@@ -3,10 +3,15 @@
 <html lang="en">
 <head th:replace="~{fragments/headers.html::head}"></head>
 <body>
-<header th:replace="~{fragments/headers.html::moderator_user_navbar}"></header>
+<div th:if="${isModerator}==true" >
+  <header th:replace="~{fragments/headers.html::moderator_user_navbar}"></header>
+</div>
+<div th:if="${isTeacher}==true">
+  <header th:replace="~{fragments/headers.html::teacher_user_navbar}"></header>
+</div>
 <header id="head" class="secondary">
   <div class="container">
-    <h1>User Update</h1>
+    <h1>Users Participations</h1>
   </div>
 </header>
 

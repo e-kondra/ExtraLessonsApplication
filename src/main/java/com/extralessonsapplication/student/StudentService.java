@@ -6,6 +6,7 @@ import com.extralessonsapplication.user.UserRole;
 import com.extralessonsapplication.user.UserService;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -52,6 +53,22 @@ public class StudentService {
 
     public ArrayList<StudentEntity> getAllActiveStudentsBySchool(SchoolEntity school) throws Exception {
         return (ArrayList<StudentEntity>) this.studentRepository.findAllBySchoolEqualsAndIsActiveTrue(school);
+    }
+
+    //all active students + restricted by contract dates
+    public ArrayList<StudentEntity> getStudentsBySchool(SchoolEntity school) throws Exception {
+        ArrayList<StudentEntity> activeStudentsResult = new ArrayList<>();
+        ArrayList<StudentEntity> activeStudents = (ArrayList<StudentEntity>) this.studentRepository.findAllBySchoolEqualsAndIsActiveTrue(school);
+        for(StudentEntity student: activeStudents){
+            System.out.println(student.getContractEnd().compareTo(LocalDate.now()));
+            if( student.getContractEnd().compareTo(LocalDate.now())>=0
+            && student.getContractBegin().compareTo(LocalDate.now())<=0) {
+                System.out.println(student.getContractEnd().compareTo(LocalDate.now()));
+                activeStudentsResult.add(student);
+            }
+        }
+        activeStudentsResult.forEach(System.out::println);
+        return activeStudentsResult;
     }
 
     public StudentEntity findStudentById(Long id) throws Exception{
