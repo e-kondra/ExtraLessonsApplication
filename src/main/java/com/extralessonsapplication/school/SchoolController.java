@@ -27,7 +27,7 @@ public class SchoolController {
             System.out.println(schoolEntity);
             schoolEntity.setIsActive(true);
             this.schoolService.createSchool(schoolEntity);
-            return "redirect:/schoolsList?status=SCHOOL_CREATION_SUCCESS";
+            return "redirect:/schoolsList?status=SCHOOL_WAS_CREATED_SUCCESSFULLY";
         } catch (Exception exception){
             return "redirect:/schoolsList?status=SCHOOL_CREATION_FAILED&error" + exception.getMessage();
         }
@@ -55,7 +55,7 @@ public class SchoolController {
             this.schoolService.getSchoolById(id);
             school.setId(id);
             this.schoolService.updateSchool(school);
-            return "redirect:/schoolsList?status=SCHOOL_UPDATING_SUCCESS";
+            return "redirect:/schoolsList?status=SCHOOL_WAS_UPDATED_SUCCESSFULLY";
         } catch(Exception e){
             return "redirect:/schoolsList?status=SCHOOL_UPDATING_FAILED&error" + e.getMessage();
         }

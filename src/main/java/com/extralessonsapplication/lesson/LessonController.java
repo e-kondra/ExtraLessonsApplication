@@ -118,15 +118,14 @@ public class LessonController {
                                      @CookieValue(name = "loggedInUserId", defaultValue = "null") String userId,
                                      @CookieValue(name = "chosenSchoolId", defaultValue = "null") String chosenSchoolId){
         try{
-            System.out.println(requestParams);
             this.lessonService.updateLesson(updatedLesson);
             this.participationService.updateLessonsParticipations(updatedLesson,
                     requestParams, this.participationService.getParticipationsByLesson(updatedLesson));
             UserEntity currentUser = this.userService.findUserById(Long.parseLong(userId));
             if(this.userService.isUserModerator(currentUser))
-                return "redirect:/lessonsList?status=LESSON_UPDATING_SUCCESS";
+                return "redirect:/lessonsList?status=LESSON_WAS_UPDATED_SUCCESSFULLY";
             if(this.userService.isUserTeacher(currentUser))
-                return "redirect:/lessonsList/" + chosenSchoolId + "?status=LESSON_UPDATING_SUCCESS";
+                return "redirect:/lessonsList/" + chosenSchoolId + "?status=LESSON_WAS_UPDATED_SUCCESSFULLY";
             return "redirect:/lessonsList?status=LESSON_UPDATING_FAILED&error";
         } catch (Exception e) {
             return "redirect:/lessonsList?status=LESSON_UPDATING_FAILED&error" + e.getMessage();

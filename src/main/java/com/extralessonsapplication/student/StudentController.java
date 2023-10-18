@@ -79,9 +79,9 @@ public class StudentController {
                 this.studentService.createParentByTeacher(studentEntity);
             }
             if(!chosenSchoolId.isBlank()||!chosenSchoolId.isEmpty()) {
-                return "redirect:/studentsList/" + chosenSchoolId + "?status=STUDENT_CREATION_SUCCESS";
+                return "redirect:/studentsList/" + chosenSchoolId + "?status=STUDENT_WAS_CREATED_SUCCESSFULLY";
             }
-            return "redirect:/studentsList?status=STUDENT_CREATION_SUCCESS";
+            return "redirect:/studentsList?status=STUDENT_WAS_CREATED_SUCCESSFULLY";
         } catch (Exception exception){
             if(!chosenSchoolId.isBlank()||!chosenSchoolId.isEmpty()) {
                 return "redirect:/studentsList/" + chosenSchoolId + "?status=STUDENT_CREATION_FAILED" + exception.getMessage();
@@ -127,9 +127,9 @@ public class StudentController {
             this.studentService.updateStudent(student);
             UserEntity loggedInUser = this.userService.findUserById(Long.parseLong(loggedInUserId));
             if(this.userService.isUserTeacher(loggedInUser)){
-                return "redirect:/studentsList/" + chosenSchoolId + "?status=STUDENT_UPDATING_SUCCESS";
+                return "redirect:/studentsList/" + chosenSchoolId + "?status=STUDENT_WAS_UPDATED_SUCCESSFULLY";
             }
-            return "redirect:/studentsList?status=STUDENT_UPDATING_SUCCESS";
+            return "redirect:/studentsList?status=STUDENT_WAS_UPDATED_SUCCESSFULLY";
         } catch(Exception e){
             if(!chosenSchoolId.isBlank()||!chosenSchoolId.isEmpty()) {
                 return "redirect:/studentsList/"+chosenSchoolId+"?message=STUDENT_UPDATE_FAILED&error=" + e.getMessage();

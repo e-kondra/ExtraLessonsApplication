@@ -62,7 +62,7 @@
     </div>
     <div class="form-group">
       <label for="comment">Comment</label>
-      <textarea th:value="${lesson.getComment()}" id="comment" class="form-control" placeholder="Comment"></textarea>
+      <textarea name="comment" th:value="${lesson.getComment()}" id="comment" class="form-control" th:placeholder="${lesson.getComment()}"></textarea>
     </div>
     <div class="form-group">
       <input type="checkbox" id="isActive" name="isActive" th:checked="${lesson.getIsActive()}">

@@ -75,7 +75,7 @@ public class UserController {
             userEntity.setStudent(studentEntity);
             userEntity.setIsActive(true);
             this.userService.createUser(userEntity);
-            return "redirect:/usersList?status=USER_CREATION_SUCCESS";
+            return "redirect:/usersList?status=USER_WAS_CREATED_SUCCESSFULLY";
         } catch (Exception exception){
             return "redirect:/usersList?status=USER_CREATION_FAILED&error" + exception.getMessage();
         }
@@ -101,7 +101,6 @@ public class UserController {
         cookie2.setMaxAge(0);
         cookie2.setPath("/");
         response.addCookie(cookie2);
-
         return "redirect:/?status=LOGOUT_SUCCESSFUL";
     }
 
@@ -127,9 +126,9 @@ public class UserController {
             String studentPersonalCode = requestParams.get("studentPersonalCode");
             user.setStudent(this.studentService.getStudentByPersonalCode(studentPersonalCode));
             this.userService.updateUser(user);
-            return "redirect:/usersList?message=USER_UPDATE_SUCCESS";
+            return "redirect:/usersList?status=USER_WAS_UPDATED_SUCCESSFULLY";
         } catch (Exception exception){
-            return "redirect:/usersList?message=USER_UPDATE_FAILED&error=" + exception.getMessage();
+            return "redirect:/usersList?mstatus=USER_UPDATE_FAILED&error=" + exception.getMessage();
         }
     }
 
@@ -145,10 +144,12 @@ public class UserController {
     @GetMapping("/profile")
     public String displayProfile(Model model,
                                  HttpServletRequest request,
-                                 @CookieValue(name = "loggedInUserId", defaultValue = "null") String loggedInUserId){
+                                 @CookieValue(name = "loggedInUserId", defaultValue = "null") String loggedInUserId,
+                                 @RequestParam Map<String, String> requestParams){
        try {
            UserEntity user = this.userService.findUserById(Long.parseLong(loggedInUserId));
            model.addAttribute("userItem", user);
+           //model.addAttribute("param", requestParams);
            return "profile";
        }catch (Exception exception){
            return "redirect:/profile?message=PROFILE_FAILED&error=" + exception.getMessage();
@@ -166,9 +167,9 @@ public class UserController {
             user.setStudent(loggedUser.getStudent());
             user.setIsActive(true);
             this.userService.updateUser(user);
-            return "redirect:/profile?message=USER_UPDATE_SUCCESS";
+            return "redirect:/profile?message=PROFILE_WAS_UPDATED_SUCCESSFULY";
         } catch (Exception exception){
-            return "redirect:/profile?message=USER_UPDATE_FAILED&error=" + exception.getMessage();
+            return "redirect:/profile?message=PROFILE_UPDATING_FAILED&error=" + exception.getMessage();
         }
     }
 
