@@ -54,11 +54,17 @@ public class ParticipationController {
     }
 
     @GetMapping("/participations_create/{lessonId}")
-    public String displayParticipationsCreating(@PathVariable() Long lessonId, Model model){
+    public String displayParticipationsCreating(@PathVariable() Long lessonId,
+                                                Model model,
+                                                @CookieValue(name = "loggedInUserId", defaultValue = "null") String userId){
         try {
+            UserEntity loggedInUser = this.userService.findUserById(Long.parseLong(userId));
             LessonEntity createdLesson = this.lessonService.getLessonById(lessonId);
+
+            model.addAttribute("isModerator", this.userService.isUserModerator(loggedInUser));
+            model.addAttribute("isTeacher", this.userService.isUserTeacher(loggedInUser));
             model.addAttribute("lesson", createdLesson);
-            model.addAttribute("students", this.studentService.getAllActiveStudentsBySchool(createdLesson.getSchool()));
+            model.addAttribute("students", this.studentService.getStudentsBySchool(createdLesson.getSchool()));
             return "school_students";
         } catch (Exception exception){
             return "redirect:/lesson_update/" + lessonId + "?status=PARTICIPATION_CREATING_FAILED&error" + exception.getMessage();
@@ -70,7 +76,7 @@ public class ParticipationController {
                                                 @RequestParam Map<String, String> requestParams){
         try {
             LessonEntity createdLesson = this.lessonService.getLessonById(lessonId);
-            this.participationService.createLessonsParticipations(createdLesson, requestParams, this.studentService.getAllActiveStudentsBySchool(createdLesson.getSchool()));
+            this.participationService.createLessonsParticipations(createdLesson, requestParams, this.studentService.getStudentsBySchool(createdLesson.getSchool()));
             return "redirect:/lesson_update/" + lessonId + "?status=PARTICIPATION_CREATING_SUCCESS";
         } catch (Exception exception){
             return "redirect:/lesson_update/" + lessonId + "?status=PARTICIPATION_CREATING_FAILED&error" + exception.getMessage();
