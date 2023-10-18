@@ -28,7 +28,8 @@ public class StudentEntity {
     @OneToMany(mappedBy = "student")
     Set<Participation> participations;
 
-    public StudentEntity(String name, String lastName, String personalCode, SchoolEntity school, LocalDate contractBegin, LocalDate contractEnd, Boolean isActive) {
+    public StudentEntity(Long id, String name, String lastName, String personalCode, SchoolEntity school, LocalDate contractBegin, LocalDate contractEnd, Boolean isActive) {
+        this.id = id;
         this.name = name;
         this.lastName = lastName;
         this.personalCode = personalCode;

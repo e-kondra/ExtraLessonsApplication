@@ -4,7 +4,10 @@ import com.extralessonsapplication.participation.ParticipationService;
 import com.extralessonsapplication.school.SchoolEntity;
 import org.springframework.stereotype.Service;
 
+import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Comparator;
 
 @Service
 public class LessonService {
@@ -17,7 +20,9 @@ public class LessonService {
     }
 
     public ArrayList<LessonEntity> getAllLessons() {
-        return (ArrayList<LessonEntity>) this.lessonRepository.findAll();
+        ArrayList<LessonEntity> lessonsList =(ArrayList<LessonEntity>) this.lessonRepository.findAll();
+        lessonsList.sort(Comparator.comparing(LessonEntity::getDate).reversed());
+        return lessonsList;
     }
 
     public void createLesson(LessonEntity lessonEntity) {
@@ -37,7 +42,11 @@ public class LessonService {
     }
 
     public ArrayList<LessonEntity> getLessonsBySchool(SchoolEntity school){
-        return (ArrayList<LessonEntity>) this.lessonRepository
+        ArrayList<LessonEntity> lessonsList = (ArrayList<LessonEntity>) this.lessonRepository
                 .findAllBySchoolEqualsAndIsActiveTrue(school);
+        lessonsList.sort(Comparator.comparing(LessonEntity::getDate).reversed());
+        return lessonsList;
     }
+
+
 }

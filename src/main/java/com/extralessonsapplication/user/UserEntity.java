@@ -28,7 +28,8 @@ public class UserEntity {
     private Timestamp createdAt;
     private Timestamp updatedAt;
 
-    public UserEntity(String username, String password, String name, String lastname, UserRole role, String email, Boolean isActive, StudentEntity student, Timestamp createdAt, Timestamp updatedAt) {
+    public UserEntity(Long id, String username, String password, String name, String lastname, UserRole role, String email, Boolean isActive, Timestamp createdAt, Timestamp updatedAt) {
+        this.id = id;
         this.username = username;
         this.password = password;
         this.name = name;
@@ -36,7 +37,6 @@ public class UserEntity {
         this.role = role;
         this.email = email;
         this.isActive = isActive;
-        this.student = student;
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
