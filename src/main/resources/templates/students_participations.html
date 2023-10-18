@@ -22,7 +22,7 @@
               <th scope="col">#</th>
               <th scope="col">Date</th>
               <th scope="col">Lesson</th>
-              <th scope="col">Attended</th>
+              <th scope="col">Attend</th>
               <th scope="col">Amount</th>
             </tr>
             </thead>
@@ -49,11 +49,9 @@
         </div>
         <div th:with="mycounter = ${counter.clear()}"></div>
       </div>
-
-
     </div>
   </div>
 </div>
-
+<div th:replace="~{fragments/scripts::scripts}"></div>
 </body>
 </html>
