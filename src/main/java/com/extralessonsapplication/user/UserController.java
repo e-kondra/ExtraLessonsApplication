@@ -134,11 +134,42 @@ public class UserController {
     }
 
     @GetMapping("/teacher")
-    public String displayTeacherPage(Model model, @CookieValue(name="chosenSchoolId", required=false) String schoolId) {
+    public String displayTeacherPage(Model model,
+                                     @CookieValue(name="chosenSchoolId", required=false) String schoolId) {
         model.addAttribute("counter", this.counter);
         model.addAttribute("schools", this.schoolService.getAllActiveSchools());
         model.addAttribute("chosenSchoolId", schoolId);
         return "teacherMain";
+    }
+
+    @GetMapping("/profile")
+    public String displayProfile(Model model,
+                                 HttpServletRequest request,
+                                 @CookieValue(name = "loggedInUserId", defaultValue = "null") String loggedInUserId){
+       try {
+           UserEntity user = this.userService.findUserById(Long.parseLong(loggedInUserId));
+           model.addAttribute("userItem", user);
+           return "profile";
+       }catch (Exception exception){
+           return "redirect:/profile?message=PROFILE_FAILED&error=" + exception.getMessage();
+       }
+    }
+
+    @PostMapping("/profile")
+    public String handleProfileUpdating(UserEntity user,
+                                        @CookieValue(name = "loggedInUserId", defaultValue = "null") String loggedInUserId){
+        try {
+            UserEntity loggedUser = this.userService.findUserById(Long.parseLong(loggedInUserId));
+            user.setId(Long.parseLong(loggedInUserId));
+            user.setRole(loggedUser.getRole());
+            user.setCreatedAt(loggedUser.getCreatedAt());
+            user.setStudent(loggedUser.getStudent());
+            user.setIsActive(true);
+            this.userService.updateUser(user);
+            return "redirect:/profile?message=USER_UPDATE_SUCCESS";
+        } catch (Exception exception){
+            return "redirect:/profile?message=USER_UPDATE_FAILED&error=" + exception.getMessage();
+        }
     }
 
 
