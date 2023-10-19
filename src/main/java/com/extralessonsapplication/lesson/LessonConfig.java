@@ -45,7 +45,7 @@ public class LessonConfig {
                     3L,
                     java.sql.Date.valueOf(LocalDate.of(2023, 9, 22)),
                     "Robot Friends: How Robots Communicate",
-                    "RRobots have their own way of talking to each other. We'll explore how robots communicate " +
+                    "Robots have their own way of talking to each other. We'll explore how robots communicate " +
                             "and create art with 3D pens",
 
                     teacher1,
@@ -108,7 +108,7 @@ public class LessonConfig {
 
 
             LessonEntity lesson101 = new LessonEntity(
-                    101L,
+                    9L,
                     java.sql.Date.valueOf(LocalDate.of(2023, 9, 8)),
                     "Meet the Robots: An introduction to robotics",
                     "In our first lesson,we will meet the amazing world of robots and 3D pens. " +
@@ -118,7 +118,7 @@ public class LessonConfig {
                     true
             );
             LessonEntity lesson102 = new LessonEntity(
-                    102L,
+                    10L,
                     java.sql.Date.valueOf(LocalDate.of(2023, 9, 15)),
                     "Building Our First Robot: The Robot Kit Adventure",
                     "Are you ready to become a robot builder? We'll start with robot kits and use 3D pens" +
@@ -128,7 +128,7 @@ public class LessonConfig {
                     true
             );
             LessonEntity lesson103 = new LessonEntity(
-                    103L,
+                    11L,
                     java.sql.Date.valueOf(LocalDate.of(2023, 9, 22)),
                     "Robot Friends: How Robots Communicate",
                     "Robots have their own way of talking to each other. We'll explore how robots communicate " +
@@ -138,7 +138,7 @@ public class LessonConfig {
                     true
             );
             LessonEntity lesson104 = new LessonEntity(
-                    104L,
+                    12L,
                     java.sql.Date.valueOf(LocalDate.of(2023, 9, 29)),
                     "Robot Detectives: Sensors and How They Work",
                     "Have you ever wondered how robots can see and sense their surroundings? We'll learn about" +
@@ -148,7 +148,7 @@ public class LessonConfig {
                     true
             );
             LessonEntity lesson105 = new LessonEntity(
-                    105L,
+                    13L,
                     java.sql.Date.valueOf(LocalDate.of(2023, 10, 6)),
                     "Robot Art: Creating with 3D Pens and Robots",
                     "Unleash your creativity! Robots and 3D pens will help us create amazing sculptures and " +
@@ -158,7 +158,7 @@ public class LessonConfig {
                     true
             );
             LessonEntity lesson106 = new LessonEntity(
-                    106L,
+                    14L,
                     java.sql.Date.valueOf(LocalDate.of(2023, 10, 13)),
                     "Fun with Coding: Teaching Robots New Tricks",
                     "Coding is like teaching robots to dance or tell jokes. We'll have fun learning how to" +
@@ -169,7 +169,7 @@ public class LessonConfig {
                     true
             );
             LessonEntity lesson107 = new LessonEntity(
-                    107L,
+                    15L,
                     java.sql.Date.valueOf(LocalDate.of(2023, 10, 20)),
                     "Robot Games: Challenges and Competitions",
                     "It's time for some friendly robot competitions and games. Let's see whose robot can " +
@@ -179,7 +179,7 @@ public class LessonConfig {
                     true
             );
             LessonEntity lesson108 = new LessonEntity(
-                    108L,
+                    16L,
                     java.sql.Date.valueOf(LocalDate.of(2023, 10, 27)),
                     "Robot Story Time: Learning About Robot History",
                     "Join us for a journey through the history of robots. We'll learn about famous robots " +

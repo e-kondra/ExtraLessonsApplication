@@ -40,6 +40,14 @@
             <label for="student">Student</label>
             <input readonly id="student" name="student" type="text" class="form-control" th:placeholder="${userItem.getStudent()}">
           </div>
+          <div class="form-group">
+            <label for="contractBegin">Contract begin</label>
+            <input readonly id="contractBegin" name="contractBegin" type="date" class="form-control" th:value="${userItem.getStudent().getContractBegin()}">
+          </div>
+          <div class="form-group">
+            <label for="contractEnd">Contract end</label>
+            <input readonly id="contractEnd" name="contractEnd" type="date" class="form-control" th:value="${userItem.getStudent().getContractEnd()}">
+          </div>
           <button type="submit" class="btn btn-two">Save</button><p><br/></p>
         </form>
       </div>

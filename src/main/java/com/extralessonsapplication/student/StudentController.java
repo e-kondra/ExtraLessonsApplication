@@ -70,6 +70,14 @@ public class StudentController {
                                         @CookieValue(name = "chosenSchoolId", defaultValue = "null") String chosenSchoolId,
                                         @CookieValue(name = "loggedInUserId", defaultValue = "null") String loggedInUserId){
         try {
+            StudentEntity existingStudent = this.studentService.getStudentByPersonalCode(studentEntity.getPersonalCode());
+            if (existingStudent != null) {
+                return "redirect:/student_create?status=PERSONAL_CODE_NOT_UNIQUE";
+            }
+            if (studentEntity.getContractEnd().isBefore(studentEntity.getContractBegin())) {
+                return "redirect:/student_create?status=INVALID_CONTRACT_DATE";
+            }
+
             studentEntity.setIsActive(true);
             UserEntity user = this.userService.findUserById(Long.parseLong(loggedInUserId));
             studentEntity = this.studentService.createStudent(studentEntity);
