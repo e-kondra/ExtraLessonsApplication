@@ -128,7 +128,7 @@ public class UserController {
             this.userService.updateUser(user);
             return "redirect:/usersList?status=USER_WAS_UPDATED_SUCCESSFULLY";
         } catch (Exception exception){
-            return "redirect:/usersList?mstatus=USER_UPDATE_FAILED&error=" + exception.getMessage();
+            return "redirect:/usersList?status=USER_UPDATE_FAILED&error=" + exception.getMessage();
         }
     }
 

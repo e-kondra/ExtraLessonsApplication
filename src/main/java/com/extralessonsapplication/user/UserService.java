@@ -62,4 +62,12 @@ public class UserService {
     public Boolean isUserTeacher(UserEntity user){
         return user.getRole().toString().equals("TEACHER");
     }
+
+    public Boolean isUserParent(UserEntity user) {return user.getRole().toString().equals("PARENT");}
+
+    public UserEntity findActiveModerator() throws Exception{
+        return this.userRepository.findFirstByIsActiveTrueAndRoleEquals(UserRole.MODERATOR);
+    }
+
+
 }
