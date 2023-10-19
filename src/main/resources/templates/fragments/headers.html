@@ -138,7 +138,8 @@
                             <li><a href="/lesson_create">New Lesson</a></li>
                         </ul>
                     </li>
-                    <li class="c6"><a href="/logout">Logout</a></li>
+                    <li class="c6"><a href="/messagesListToUser">Messages</a></li>
+                    <li class="c1"><a href="/logout">Logout</a></li>
                 </ul>
             </div>
             <!--/.nav-collapse -->
@@ -193,6 +194,14 @@
                         </ul>
                     </li>
                     <li th:if="${chosenSchoolId}" class="c4"><a href="/calculation">Calculation</a></li>
+                    <li class="c3 dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown">Messages <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+<!--                            <li><a href="/messagesListFor">Messages For Me</a></li>-->
+                            <li><a href="/message_create">New Message</a></li>
+                            <li><a href="/messagesListFromUser">Messages From Me</a></li>
+                        </ul>
+                    </li>
                     <li class="c6"><a href="/logout">Logout</a></li>
                 </ul>
             </div>
@@ -233,6 +242,14 @@
                 <ul class="nav navbar-nav pull-right mainNav">
                     <li class="c1"><a href="/students_participations">Participations</a></li>
                     <li class="c3"><a href="/profile">Profile</a></li>
+                    <li class="c2 dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown">Messages <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <!--                            <li><a href="/messagesListFor">Messages For Me</a></li>-->
+                            <li><a href="/message_create">New Message</a></li>
+                            <li><a href="/messagesListFromUser">Messages From Me</a></li>
+                        </ul>
+                    </li>
                     <li class="c6"><a href="/logout">Logout</a></li>
                 </ul>
             </div>

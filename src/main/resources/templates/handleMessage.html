@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="~{fragments/headers.html::head}"></head>
+<body>
+<div th:if="${isModerator}==true">
+  <header th:replace="~{fragments/headers.html::moderator_user_navbar}"></header>
+</div>
+<div th:if="${isTeacher}==true">
+  <header th:replace="~{fragments/headers.html::teacher_user_navbar}"></header>
+</div>
+<div th:if="${isParent}==true">
+  <header th:replace="~{fragments/headers.html::parent_user_navbar}"></header>
+</div>
+<header id="head" class="secondary">
+  <div class="container">
+    <h1>Message for moderator</h1>
+  </div>
+</header>
+<!-- container -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-8">
+      <h3 class="section-title">Your Message</h3>
+
+      <form class="form-light mt-20" role="form" th:action="'/handleMessage/' + ${message.getId()}" method="post">
+        <div class="form-group">
+          <label for="fromName">Name</label>
+          <input readonly id="fromName" name="fromName" type="text" class="form-control" th:value="${message.getFromName()}">
+        </div>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="fromEmail">Email</label>
+              <input readonly id="fromEmail" name="fromEmail" type="email" class="form-control" th:value="${ message.getFromEmail()}">
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="fromPhone">Phone</label>
+              <input readonly id="fromPhone" name="fromPhone" type="text" class="form-control" th:value="${message.getFromPhone()}">
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="subject">Subject</label>
+          <input readonly id="subject" name="subject" type="text" class="form-control" th:value="${message.getSubject()}">
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea readonly id="message" name="message" class="form-control" th:placeholder="${message.message}" th:value="${message.message}" style="height:100px;"></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="answer">Answer</label>
+          <textarea th:readonly="${isModerator}==true?false:true" id="answer" name="answer" class="form-control" th:value="${message.answer}"
+                    th:placeholder="${message.answer}==null?'Answer...':${message.answer}" style="height:100px;"></textarea>
+        </div>
+        <div class="form-group">
+          <input th:disabled="${isModerator}==true?false:true" id="done" type="checkbox" name="done"
+                  th:checked="${message.getDone()}">
+          <label for="done">Completed</label>
+        </div>
+        <div th:if="${isModerator}==true">
+        <button type="submit" class="btn btn-two">Save message</button><p><br/></p>
+        </div>
+      </form>
+    </div>
+    <div class="col-md-4">
+      <div class="row">
+        <div class="col-md-6">
+          <h3 class="section-title">Office Address</h3>
+          <div class="contact-info">
+            <h5>Address</h5>
+            <p>Vilnius street 1, Riga, Latvia, LV 10690</p>
+
+            <h5>Email</h5>
+            <p>info@robotica.com</p>
+
+            <h5>Phone</h5>
+            <p> 012-345-6789</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /container -->
+<div th:replace="~{fragments/scripts::scripts}"></div>
+</body>
+</html>ml>

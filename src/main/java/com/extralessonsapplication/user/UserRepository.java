@@ -13,4 +13,6 @@ public interface UserRepository extends CrudRepository<UserEntity, Long> {
 
     UserEntity findByStudentAndIsActiveTrue(StudentEntity student);
     ArrayList<UserEntity> findAllByRoleEqualsAndIsActiveTrue(UserRole role);
+
+    UserEntity findFirstByIsActiveTrueAndRoleEquals(UserRole role);
 }
