@@ -86,7 +86,7 @@ public class StudentController {
                 System.out.println(user.getRole().toString());
                 this.studentService.createParentByTeacher(studentEntity);
             }
-            if(!chosenSchoolId.isBlank()||!chosenSchoolId.isEmpty()) {
+            if(!chosenSchoolId.equals("null")) {
                 return "redirect:/studentsList/" + chosenSchoolId + "?status=STUDENT_WAS_CREATED_SUCCESSFULLY";
             }
             return "redirect:/studentsList?status=STUDENT_WAS_CREATED_SUCCESSFULLY";
