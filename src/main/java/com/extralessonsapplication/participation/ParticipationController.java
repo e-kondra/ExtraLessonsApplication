@@ -56,11 +56,12 @@ public class ParticipationController {
     @GetMapping("/participations_create/{lessonId}")
     public String displayParticipationsCreating(@PathVariable() Long lessonId,
                                                 Model model,
+                                                @CookieValue(name = "chosenSchoolId", defaultValue = "null") String chosenSchoolId,
                                                 @CookieValue(name = "loggedInUserId", defaultValue = "null") String userId){
         try {
             UserEntity loggedInUser = this.userService.findUserById(Long.parseLong(userId));
             LessonEntity createdLesson = this.lessonService.getLessonById(lessonId);
-
+            model.addAttribute("chosenSchoolId", chosenSchoolId); // for header
             model.addAttribute("isModerator", this.userService.isUserModerator(loggedInUser));
             model.addAttribute("isTeacher", this.userService.isUserTeacher(loggedInUser));
             model.addAttribute("lesson", createdLesson);
