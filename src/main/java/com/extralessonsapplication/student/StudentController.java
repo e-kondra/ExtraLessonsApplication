@@ -10,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Map;
 
 
 @Controller
@@ -81,12 +80,10 @@ public class StudentController {
             studentEntity.setIsActive(true);
             UserEntity user = this.userService.findUserById(Long.parseLong(loggedInUserId));
             studentEntity = this.studentService.createStudent(studentEntity);
-            System.out.println(studentEntity.getId());
             if(user.getRole()== UserRole.TEACHER){
-                System.out.println(user.getRole().toString());
                 this.studentService.createParentByTeacher(studentEntity);
             }
-            if(!chosenSchoolId.isBlank()||!chosenSchoolId.isEmpty()) {
+            if(!chosenSchoolId.equals("null")) {
                 return "redirect:/studentsList/" + chosenSchoolId + "?status=STUDENT_WAS_CREATED_SUCCESSFULLY";
             }
             return "redirect:/studentsList?status=STUDENT_WAS_CREATED_SUCCESSFULLY";

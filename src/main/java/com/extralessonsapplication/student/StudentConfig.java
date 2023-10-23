@@ -1,17 +1,12 @@
 package com.extralessonsapplication.student;
 
-import com.extralessonsapplication.lesson.LessonEntity;
-import com.extralessonsapplication.lesson.LessonRepository;
 import com.extralessonsapplication.school.SchoolEntity;
 import com.extralessonsapplication.school.SchoolRepository;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
+
 
 import java.time.LocalDate;
 import java.util.List;
 
-//@Configuration
 public class StudentConfig {
 
 

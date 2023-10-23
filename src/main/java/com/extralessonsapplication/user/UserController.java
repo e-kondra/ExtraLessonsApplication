@@ -22,7 +22,7 @@ public class UserController {
     private final StudentService studentService;
     private final SchoolService schoolService;
     private final Counter counter = new Counter();
-    @Autowired // Dependency Injection
+    @Autowired
     public UserController(UserService userService, StudentService studentService, SchoolService schoolService){
         this.userService = userService;
         this.studentService = studentService;
@@ -39,7 +39,6 @@ public class UserController {
         try{
             UserEntity user = this.userService.verifyUser(userLoginRequest.getUsername(), userLoginRequest.getPassword());
             if (user == null) throw new Exception("Username or password is not correct");
-            //create cookie and save user id to the cookie/ session
             Cookie cookie = new Cookie("loggedInUserId", user.getId().toString());
             cookie.setMaxAge(10000);
             response.addCookie(cookie);
@@ -69,7 +68,6 @@ public class UserController {
     @PostMapping("/user_create")
     public String handleUserCreating(UserEntity userEntity, @RequestParam Map<String, String> requestParams){
         try {
-            System.out.println(userEntity);
             String studentPersonalCode = requestParams.get("studentPersonalCode");
             StudentEntity studentEntity = this.studentService.getStudentByPersonalCode(studentPersonalCode);
             userEntity.setStudent(studentEntity);
@@ -106,7 +104,6 @@ public class UserController {
 
     @GetMapping("/user_update/{id}")
     public String displayUserUpdatePage(@PathVariable() Long id, Model model) {
-        System.out.println("id=" + id);
         try {
             UserEntity user = this.userService.findUserById(id);
             model.addAttribute("userItem", user);
@@ -149,7 +146,6 @@ public class UserController {
        try {
            UserEntity user = this.userService.findUserById(Long.parseLong(loggedInUserId));
            model.addAttribute("userItem", user);
-           //model.addAttribute("param", requestParams);
            return "profile";
        }catch (Exception exception){
            return "redirect:/profile?message=PROFILE_FAILED&error=" + exception.getMessage();

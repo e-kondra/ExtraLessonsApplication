@@ -1,19 +1,11 @@
 package com.extralessonsapplication.user;
 
-import com.extralessonsapplication.lesson.LessonEntity;
-import com.extralessonsapplication.lesson.LessonRepository;
-import com.extralessonsapplication.school.SchoolEntity;
-import com.extralessonsapplication.school.SchoolRepository;
 import com.extralessonsapplication.student.StudentEntity;
 import com.extralessonsapplication.student.StudentRepository;
-import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
-import java.time.LocalDate;
+
 import java.util.List;
 
-//@Configuration
 public class UserConfig {
 
     public void userCommandLineRunner(UserRepository repository,
@@ -245,8 +237,5 @@ public class UserConfig {
 
             repository.saveAll(
                     List.of(user1,user2,user3,user4,user5,user6,user7,user8,user9,user10,user11,user12,user13,user14,user15,user16));
-
-
-
         };
     }

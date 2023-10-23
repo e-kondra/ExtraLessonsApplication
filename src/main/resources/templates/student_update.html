@@ -21,11 +21,11 @@
             <form class="form-light mt-20" role="form" th:action="'/student_update/'+${student.getId()}" method="post">
                 <div class="form-group">
                     <label for="name">Name</label>
-                    <input id="name" name="name" type="text" class="form-control" th:value="${student.getName()}">
+                    <input required id="name" name="name" type="text" class="form-control" th:value="${student.getName()}">
                 </div>
                 <div class="form-group">
                     <label for="lastName">Last name</label>
-                    <input id="lastName" name="lastName" type="text" class="form-control" th:value="${student.getLastName()}">
+                    <input required id="lastName" name="lastName" type="text" class="form-control" th:value="${student.getLastName()}">
                 </div>
                 <div class="form-group">
                     <label for="personalCode">Personal code</label>

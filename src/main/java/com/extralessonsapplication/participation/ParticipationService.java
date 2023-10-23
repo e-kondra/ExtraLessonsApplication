@@ -103,7 +103,6 @@ public class ParticipationService {
             return studentAmounts;
 
         }catch (Exception exception){
-            System.out.println(exception.getMessage());
             return null;
         }
     }

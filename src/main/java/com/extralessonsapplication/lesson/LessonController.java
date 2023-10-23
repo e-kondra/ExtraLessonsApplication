@@ -4,12 +4,10 @@ import com.extralessonsapplication.participation.ParticipationService;
 import com.extralessonsapplication.school.Counter;
 import com.extralessonsapplication.school.SchoolEntity;
 import com.extralessonsapplication.school.SchoolService;
-import com.extralessonsapplication.student.StudentEntity;
 import com.extralessonsapplication.student.StudentService;
 import com.extralessonsapplication.user.UserEntity;
 import com.extralessonsapplication.user.UserService;
 import jakarta.servlet.http.Cookie;
-import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,9 +15,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.Map;
 
 @Controller
@@ -32,7 +27,7 @@ public class LessonController {
     private final LessonService lessonService;
     private Counter counter = new Counter();
 
-    @Autowired // Dependency Injection
+    @Autowired
     public LessonController(SchoolService schoolService, LessonService lessonService, UserService userService, StudentService studentService, ParticipationService participationService){
         this.schoolService = schoolService;
         this.lessonService = lessonService;
@@ -71,7 +66,6 @@ public class LessonController {
         try {
             lessonEntity.setIsActive(true);
             LessonEntity createdLesson = this.lessonService.createLessonObj(lessonEntity);
-            System.out.println(createdLesson);
             return "redirect:/participations_create/" + lessonEntity.getId() + "?status=LESSON_CREATION_SUCCESS";
         } catch (Exception exception){
             return "redirect:/lessonsList?status=LESSON_CREATION_FAILED&error" + exception.getMessage();

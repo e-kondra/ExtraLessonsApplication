@@ -9,13 +9,11 @@ import com.extralessonsapplication.student.StudentEntity;
 import com.extralessonsapplication.student.StudentService;
 import com.extralessonsapplication.user.UserEntity;
 import com.extralessonsapplication.user.UserService;
-import jakarta.persistence.GeneratedValue;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.Month;
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
@@ -56,11 +54,12 @@ public class ParticipationController {
     @GetMapping("/participations_create/{lessonId}")
     public String displayParticipationsCreating(@PathVariable() Long lessonId,
                                                 Model model,
+                                                @CookieValue(name = "chosenSchoolId", defaultValue = "null") String chosenSchoolId,
                                                 @CookieValue(name = "loggedInUserId", defaultValue = "null") String userId){
         try {
             UserEntity loggedInUser = this.userService.findUserById(Long.parseLong(userId));
             LessonEntity createdLesson = this.lessonService.getLessonById(lessonId);
-
+            model.addAttribute("chosenSchoolId", chosenSchoolId); // for header
             model.addAttribute("isModerator", this.userService.isUserModerator(loggedInUser));
             model.addAttribute("isTeacher", this.userService.isUserTeacher(loggedInUser));
             model.addAttribute("lesson", createdLesson);

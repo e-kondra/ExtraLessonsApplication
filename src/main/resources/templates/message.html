@@ -13,6 +13,9 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8">
+            <div th:if="${param.status != null}">
+                <blockquote th:text="${param.get('status')}"></blockquote>
+            </div>
             <h3 class="section-title">Your Message</h3>
 
             <form class="form-light mt-20" role="form" action="/contact" method="post">

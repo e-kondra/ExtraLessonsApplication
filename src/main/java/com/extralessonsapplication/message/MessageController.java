@@ -35,9 +35,9 @@ public class MessageController {
             message.setTo(this.messageService.getActiveModerator());
             message.setDone(false);
             this.messageService.createMessage(message);
-            return "redirect:/?status=MESSAGE_WAS_SEND_SUCCESSFULLY";
+            return "redirect:/contact?status=MESSAGE_WAS_SEND_SUCCESSFULLY";
         } catch (Exception exception){
-            return "redirect:/?status=SENDING_MESSAGE_FAILED&error=" + exception.getMessage();
+            return "redirect:/contact?status=SENDING_MESSAGE_FAILED&error=" + exception.getMessage();
         }
     }
 
