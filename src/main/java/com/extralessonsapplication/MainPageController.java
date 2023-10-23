@@ -11,7 +11,7 @@ public class MainPageController {
     }
 
     @GetMapping("/about")
-    public String displayAboutProjectPage() {
+    public String displayAboutProjectPage(){
         return "about";
     }
 }
