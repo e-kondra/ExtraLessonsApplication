@@ -70,7 +70,7 @@ public class LessonConfig {
                     "Unleash your creativity! Robots and 3D pens will help us create amazing sculptures and " +
                             "art. Let's make colorful masterpieces together.",
 
-                    teacher1,
+                    teacher2,
                     school1,
                     true
             );
@@ -95,16 +95,16 @@ public class LessonConfig {
                     school1,
                     true
             );
-            LessonEntity lesson8 = new LessonEntity(
-                    8L,
-                    java.sql.Date.valueOf(LocalDate.of(2023, 10, 27)),
-                    "Robot Story Time: Learning About Robot History",
-                    "Join us for a journey through the history of robots. We'll learn about famous robots " +
-                            "from the past and how they've inspired us",
-                    teacher1,
-                    school1,
-                    true
-            );
+//            LessonEntity lesson8 = new LessonEntity(
+//                    8L,
+//                    java.sql.Date.valueOf(LocalDate.of(2023, 10, 27)),
+//                    "Robot Story Time: Learning About Robot History",
+//                    "Join us for a journey through the history of robots. We'll learn about famous robots " +
+//                            "from the past and how they've inspired us",
+//                    teacher1,
+//                    school1,
+//                    true
+//            );
 
 
             LessonEntity lesson101 = new LessonEntity(
@@ -190,7 +190,7 @@ public class LessonConfig {
             );
 
             repository.saveAll(
-                    List.of(lesson1, lesson2,lesson3,lesson4,lesson5,lesson6,lesson7,lesson8,lesson101,lesson102,
+                    List.of(lesson1, lesson2,lesson3,lesson4,lesson5,lesson6,lesson7,lesson101,lesson102,
                             lesson103,lesson104,lesson105,lesson106,lesson107,lesson108));
 
     };
