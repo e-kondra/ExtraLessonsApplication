@@ -25,7 +25,6 @@ public class UserService {
 
     public UserEntity verifyUser(String username, String password)throws Exception {
         UserEntity user = this.userRepository.findByUsernameAndPassword(username, password);
-        System.out.println(user);
         return user;
 
     }

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class SchoolController {
     private final SchoolService schoolService;
-    @Autowired // Dependency Injection
+    @Autowired
     public SchoolController(SchoolService schoolService){
         this.schoolService = schoolService;
     }
@@ -24,7 +24,6 @@ public class SchoolController {
     @PostMapping("/school_create")
     public String handleSchoolCreating(SchoolEntity schoolEntity){
         try {
-            System.out.println(schoolEntity);
             schoolEntity.setIsActive(true);
             this.schoolService.createSchool(schoolEntity);
             return "redirect:/schoolsList?status=SCHOOL_WAS_CREATED_SUCCESSFULLY";

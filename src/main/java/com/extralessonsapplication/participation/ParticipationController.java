@@ -9,13 +9,11 @@ import com.extralessonsapplication.student.StudentEntity;
 import com.extralessonsapplication.student.StudentService;
 import com.extralessonsapplication.user.UserEntity;
 import com.extralessonsapplication.user.UserService;
-import jakarta.persistence.GeneratedValue;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.Month;
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.Map;
 

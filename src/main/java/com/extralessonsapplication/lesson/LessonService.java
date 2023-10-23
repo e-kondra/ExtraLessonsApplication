@@ -4,9 +4,8 @@ import com.extralessonsapplication.participation.ParticipationService;
 import com.extralessonsapplication.school.SchoolEntity;
 import org.springframework.stereotype.Service;
 
-import java.sql.Date;
+
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Comparator;
 
 @Service

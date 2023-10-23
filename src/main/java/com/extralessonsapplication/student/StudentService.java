@@ -32,17 +32,13 @@ public class StudentService {
     public void createParentByTeacher(StudentEntity studentEntity) throws Exception{
 
         Optional<UserEntity> parent = Optional.ofNullable(this.userService.findUserByStudent(studentEntity));
-        System.out.println(parent.isEmpty());
-        System.out.println(parent.isPresent());
         if(parent.isEmpty()==true){ //parent creation
-            System.out.println("parent is empty");
             UserEntity userParent = new UserEntity();
             userParent.setRole(UserRole.PARENT);
             userParent.setUsername(studentEntity.getPersonalCode());
             userParent.setPassword("12345");
             userParent.setIsActive(true);
             userParent.setStudent(studentEntity);
-            System.out.println(userParent);
             this.userService.createUser(userParent);
         } else {
             UserEntity userParent = this.userService.findUserByStudent(studentEntity);
@@ -60,10 +56,8 @@ public class StudentService {
         ArrayList<StudentEntity> activeStudentsResult = new ArrayList<>();
         ArrayList<StudentEntity> activeStudents = (ArrayList<StudentEntity>) this.studentRepository.findAllBySchoolEqualsAndIsActiveTrue(school);
         for(StudentEntity student: activeStudents){
-            System.out.println(student.getContractEnd().compareTo(LocalDate.now()));
             if( student.getContractEnd().compareTo(LocalDate.now())>=0
             && student.getContractBegin().compareTo(LocalDate.now())<=0) {
-                System.out.println(student.getContractEnd().compareTo(LocalDate.now()));
                 activeStudentsResult.add(student);
             }
         }
