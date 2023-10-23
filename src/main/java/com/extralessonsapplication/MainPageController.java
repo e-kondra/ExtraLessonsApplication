@@ -16,7 +16,6 @@ public class MainPageController {
     public String displayAboutProjectPage() {
         return "about";
     }
-
 }
 
 
