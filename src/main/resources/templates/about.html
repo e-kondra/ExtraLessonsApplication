@@ -1,10 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head th:replace="~{fragments/headers.html::head}"></head>
+<body>
+<header th:replace="~{fragments/headers.html::unregistered_user_navbar}"></header>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-<body>
 
+<header id="head" class="secondary">
+    <div class="container">
+        <h1>About Project</h1>
+        <p>      </p>
+    </div>
+</header>
+
+<section class="container">
+    <div class="row">
+        <!-- main content -->
+        <section class="col-sm-8 maincontent">
+            <h3>About Project</h3>
+            <p>
+                <img src="assets/images/about.jpg" alt="" class="img-rounded pull-right" width="300">
+                Purpose: developing an application that allows to monitor class attendance both
+                from the teacher and from the parent side and also provide automated calculation
+                for generating monthly payments.
+            </p>
+            <p> Our application will help simplify interaction in the teacher-parent chain. The teacher will be able to keep an electronic log of visits, as well as automatically generate an invoice based on recorded absences. The parent, in turn, will be able to control the attendance of a particular lesson, as well as receive a ready-made invoice, which will save him from the need for unnecessary calculations</p>
+            <h3>Functionality</h3>
+            <strong>An unregistered user can:</strong>
+            <p> -view common pages as the main page, about us, and etc. </p>
+            <p> -login </p>
+            <strong>Moderator can</strong>
+            <p> -users CRUD (parent, teacher); </p>
+            <p> -lessons CRUD (parent, teacher); </p>
+            <p> -school CRUD (parent, teacher); </p>
+            <strong>Functionality for teacher:</strong>
+            <p> -view a list of related lessons;</p>
+            <p> -update a list with new lesson (choose school, add the topic, create a list of students who attended the lesson, add a comment);</p>
+            <p> -edit lesson (per week);</p>
+            <p> -add new student/ edit student’s data (when adding a student and his personal code, a parent user account is created);</p>
+            <p> -change the end date of the student contract;</p>
+            <p> -monthly calculation for each student with buttons print invoice and filter (current month, previous month)</p>
+            <strong>Functionality for parent:</strong>
+            <p> -viewing invoices; lessons list.html + print invoice</p>
+            <p> -checking attendance.</p>
+
+        </section>
+        <!-- /main -->
+        <!-- Sidebar -->
+        <aside class="col-sm-4 sidebar sidebar-right">
+
+            <div class="panel">
+                <h4>Technology used:</h4>
+                <ul class="list-unstyled list-spaces">
+                    <li><a href="">Spring Boot, Thymeleaf, Bootstrap</a><br></li>
+                    <li><a href="">IDE:</a><br>
+                        <span class="small text-muted"> IntelliJ IDEA </span></li></li>
+                    <li><a href="">Responsibilities:</a><br>
+                        <span class="small text-muted">Trello</span></li>
+                    <li><a href="">Languages:</a><br>
+                        <span class="small text-muted">Java, HTML, CSS</span></li>
+                    <li><a href="">Figma</a><br></li>
+                </ul>
+            </div>
+
+        </aside>
+        <!-- /Sidebar -->
+
+    </div>
+</section>
+<!-- /container -->
+<section class="team-content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3>Our Team</h3>
+                <p></p>
+                <br />
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-md-3 col-sm-6 col-xs-6">
+                <!-- Team Member -->
+                <div class="team-member">
+                    <!-- Image Hover Block -->
+                    <div class="member-img">
+                        <!-- Image  -->
+                        <img class="img-responsive" src="assets/images/photo-1.jpg" alt="">
+                    </div>
+                    <!-- Member Details -->
+                    <h4>Ekaterina Kondratyeva</h4>
+                    <!-- Designation -->
+                    <span class="pos">CEO</span>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-6">
+                <!-- Team Member -->
+                <div class="team-member pDark">
+                    <!-- Image Hover Block -->
+                    <div class="member-img">
+                        <!-- Image  -->
+                        <img class="img-responsive" src="assets/images/photo-2.jpg" alt="">
+                    </div>
+                    <!-- Member Details -->
+                    <h4>Olga Vinogradova</h4>
+                    <!-- Designation -->
+                    <span class="pos">Director</span>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-6">
+                <!-- Team Member -->
+                <div class="team-member pDark">
+                    <div class="member-img" style="text-align: center;">
+                        <!-- Image  -->
+                        <img class="img-responsive" src="assets/images/photo-3.jpg" alt="" style="margin: auto;">
+                    </div>
+                    <!-- Member Details -->
+                    <h4>Valeria Zalygina</h4>
+                    <!-- Designation -->
+                    <span class="pos">Manager</span>
+                </div> </div>
+        </div>
+    </div>
+    </div>
+</section>
 </body>
 </html>
