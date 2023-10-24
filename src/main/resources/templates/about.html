@@ -25,42 +25,66 @@
                 from the teacher and from the parent side and also provide automated calculation
                 for generating monthly payments.
             </p>
-            <p> Our application will help simplify interaction in the teacher-parent chain. The teacher will be able to keep an electronic log of visits, as well as automatically generate an invoice based on recorded absences. The parent, in turn, will be able to control the attendance of a particular lesson, as well as receive a ready-made invoice, which will save him from the need for unnecessary calculations</p>
+            <p> Our application will help simplify interaction in the teacher-parent chain. The teacher will be able to keep an electronic log of participations, as well as automatically generate an invoice based on recorded absences. The parent, in turn, will be able to control the attendance of a particular lesson, as well as receive a ready-made invoice, which will save him from the need for unnecessary calculations.</p>
             <h3>Functionality</h3>
-            <strong>An unregistered user can:</strong>
-            <p> -view common pages as the main page, about us, and etc. </p>
-            <p> -login </p>
-            <strong>Moderator can</strong>
-            <p> -users CRUD (parent, teacher); </p>
-            <p> -lessons CRUD (parent, teacher); </p>
-            <p> -school CRUD (parent, teacher); </p>
-            <strong>Functionality for teacher:</strong>
-            <p> -view a list of related lessons;</p>
-            <p> -update a list with new lesson (choose school, add the topic, create a list of students who attended the lesson, add a comment);</p>
-            <p> -edit lesson (per week);</p>
-            <p> -add new student/ edit student’s data (when adding a student and his personal code, a parent user account is created);</p>
-            <p> -change the end date of the student contract;</p>
-            <p> -monthly calculation for each student with buttons print invoice and filter (current month, previous month)</p>
-            <strong>Functionality for parent:</strong>
-            <p> -viewing invoices; lessons list.html + print invoice</p>
-            <p> -checking attendance.</p>
 
+            <table class="table table-striped table-bordered">
+                <thead>
+                <tr>
+                    <th scope="col">Unregistered user</th>
+                    <th scope="col">Teacher</th>
+                    <th scope="col">Parent</th>
+                    <th scope="col">Moderator</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>View common pages: Main page, About project and Login</td>
+                    <td>Chose a school for current work</td>
+                    <td>Check attendances</td>
+                    <td>View list of users, create, update, deactivate user</td>
+                </tr>
+                <tr>
+                    <td>Send message to Moderator</td>
+                    <td>View a list of lessons by selected school, create lesson, update lessons created by a logged in teacher not more than 15 days ago</td>
+                    <td>Print invoice</td>
+                    <td>View list of schools, create, update, deactivate school</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>View list of students by selected school, add new student, edit student’s data (when adding a student and his personal code, a parent user account is created)</td>
+                    <td>View and update profile</td>
+                    <td>View list of students, create, update, deactivate student</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>View monthly calculation for each student and printing invoice</td>
+                    <td>Send message to Moderator, view answer and status</td>
+                    <td>View list of lessons, create, update, deactivate lesson</td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>Send message to Moderator, view answer and status</td>
+                    <td></td>
+                    <td>View list of messages, read, answer and change messages status </td>
+                </tr>
+                </tbody>
+            </table>
         </section>
         <!-- /main -->
         <!-- Sidebar -->
         <aside class="col-sm-4 sidebar sidebar-right">
 
             <div class="panel">
-                <h4>Technology used:</h4>
+                <h3>Technology used:</h3>
                 <ul class="list-unstyled list-spaces">
-                    <li><a href="">Spring Boot, Thymeleaf, Bootstrap</a><br></li>
-                    <li><a href="">IDE:</a><br>
+                    <li>Spring Boot, Thymeleaf, Bootstrap<br></li>
+                    <li>IDE:<br>
                         <span class="small text-muted"> IntelliJ IDEA </span></li></li>
-                    <li><a href="">Responsibilities:</a><br>
-                        <span class="small text-muted">Trello</span></li>
-                    <li><a href="">Languages:</a><br>
-                        <span class="small text-muted">Java, HTML, CSS</span></li>
-                    <li><a href="">Figma</a><br></li>
+                    <li>LANGUAGES:<br>
+                        <span class="small text-muted">Java, HTML, CSS, JavaScript, MySql</span></li>
+                    <li>ADDITIONAL TOOLS:<br>
+                        <span class="small text-muted">Trello, Figma</span></li>
                 </ul>
             </div>
 
@@ -84,46 +108,24 @@
             <div class="col-md-3 col-sm-6 col-xs-6">
                 <!-- Team Member -->
                 <div class="team-member">
-                    <!-- Image Hover Block -->
-                    <div class="member-img">
-                        <!-- Image  -->
-                        <img class="img-responsive" src="assets/images/photo-1.jpg" alt="">
-                    </div>
-                    <!-- Member Details -->
                     <h4>Ekaterina Kondratyeva</h4>
-                    <!-- Designation -->
-                    <span class="pos">CEO</span>
                 </div>
             </div>
             <div class="col-md-3 col-sm-6 col-xs-6">
-                <!-- Team Member -->
-                <div class="team-member pDark">
-                    <!-- Image Hover Block -->
-                    <div class="member-img">
-                        <!-- Image  -->
-                        <img class="img-responsive" src="assets/images/photo-2.jpg" alt="">
-                    </div>
-                    <!-- Member Details -->
+                <div class="team-member">
                     <h4>Olga Vinogradova</h4>
-                    <!-- Designation -->
-                    <span class="pos">Director</span>
                 </div>
             </div>
             <div class="col-md-3 col-sm-6 col-xs-6">
-                <!-- Team Member -->
-                <div class="team-member pDark">
-                    <div class="member-img" style="text-align: center;">
-                        <!-- Image  -->
-                        <img class="img-responsive" src="assets/images/photo-3.jpg" alt="" style="margin: auto;">
-                    </div>
-                    <!-- Member Details -->
+                <div class="team-member">
                     <h4>Valeria Zalygina</h4>
-                    <!-- Designation -->
-                    <span class="pos">Manager</span>
-                </div> </div>
+                </div>
+            </div>
         </div>
     </div>
     </div>
 </section>
+<footer th:replace="~{fragments/footers.html::footer}"></footer>
+<div th:replace="~{fragments/scripts::scripts}"></div>
 </body>
 </html>
