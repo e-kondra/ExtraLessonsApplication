@@ -61,7 +61,6 @@ public class StudentService {
                 activeStudentsResult.add(student);
             }
         }
-        activeStudentsResult.forEach(System.out::println);
         return activeStudentsResult;
     }
 

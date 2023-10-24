@@ -35,7 +35,7 @@ public class ParticipationConfig {
                 LessonEntity lesson5 = lessonRepository.findById(5L).orElse(null);
                 LessonEntity lesson6 = lessonRepository.findById(6L).orElse(null);
                 LessonEntity lesson7 = lessonRepository.findById(7L).orElse(null);
-                LessonEntity lesson8 = lessonRepository.findById(8L).orElse(null);
+//                LessonEntity lesson8 = lessonRepository.findById(8L).orElse(null);
                 LessonEntity lesson9 = lessonRepository.findById(9L).orElse(null);
                 LessonEntity lesson10 = lessonRepository.findById(10L).orElse(null);
                 LessonEntity lesson11 = lessonRepository.findById(11L).orElse(null);
@@ -106,7 +106,7 @@ public class ParticipationConfig {
                 Participation participation53 = new Participation(53L, student1, lesson5, true);
                 Participation participation54 = new Participation(54L, student2, lesson5, true);
                 Participation participation55 = new Participation(55L, student3, lesson5, true);
-                Participation participation56 = new Participation(56L, student4, lesson5, true);
+                Participation participation56 = new Participation(56L, student4, lesson5, false);
                 Participation participation57 = new Participation(57L, student5, lesson5, true);
                 Participation participation58 = new Participation(58L, student6, lesson5, true);
                 Participation participation59 = new Participation(59L, student7, lesson5, true);
@@ -124,7 +124,7 @@ public class ParticipationConfig {
                 Participation participation70 = new Participation(70L, student5, lesson6, true);
                 Participation participation71 = new Participation(71L, student6, lesson6, true);
                 Participation participation72 = new Participation(72L, student7, lesson6, true);
-                Participation participation73 = new Participation(73L, student8, lesson6, true);
+                Participation participation73 = new Participation(73L, student8, lesson6, false);
                 Participation participation74 = new Participation(74L, student9, lesson14, true);
                 Participation participation75 = new Participation(75L, student10, lesson14, false);
                 Participation participation76 = new Participation(76L, student11, lesson14, true);
@@ -134,7 +134,7 @@ public class ParticipationConfig {
                 Participation participation79 = new Participation(79L, student1, lesson7, true);
                 Participation participation80 = new Participation(80L, student2, lesson7, true);
                 Participation participation81 = new Participation(81L, student3, lesson7, true);
-                Participation participation82 = new Participation(82L,student4, lesson7, true);
+                Participation participation82 = new Participation(82L,student4, lesson7, false);
                 Participation participation83 = new Participation(83L, student5, lesson7, true);
                 Participation participation84 = new Participation(84L, student6, lesson7, true);
                 Participation participation85 = new Participation(85L,student7, lesson7, true);
@@ -145,14 +145,14 @@ public class ParticipationConfig {
                 Participation participation90 = new Participation(90L, student12, lesson15, true);
                 Participation participation91 = new Participation(91L, student13, lesson15, true);
 
-                Participation participation92 = new Participation(92L, student1, lesson8, true);
-                Participation participation93 = new Participation(93L, student2, lesson8, true);
-                Participation participation94 = new Participation(94L, student3, lesson8, true);
-                Participation participation95 = new Participation(95L, student4, lesson8, true);
-                Participation participation96 = new Participation(96L, student5, lesson8, false);
-                Participation participation97 = new Participation(97L, student6, lesson8, true);
-                Participation participation98 = new Participation(98L, student7, lesson8, true);
-                Participation participation99 = new Participation(99L, student8, lesson8, true);
+//                Participation participation92 = new Participation(92L, student1, lesson8, true);
+//                Participation participation93 = new Participation(93L, student2, lesson8, true);
+//                Participation participation94 = new Participation(94L, student3, lesson8, true);
+//                Participation participation95 = new Participation(95L, student4, lesson8, true);
+//                Participation participation96 = new Participation(96L, student5, lesson8, false);
+//                Participation participation97 = new Participation(97L, student6, lesson8, true);
+//                Participation participation98 = new Participation(98L, student7, lesson8, true);
+//                Participation participation99 = new Participation(99L, student8, lesson8, true);
                 Participation participation100 = new Participation(100L, student9, lesson16, true);
                 Participation participation101 = new Participation(101L, student10, lesson16, false);
                 Participation participation102 = new Participation(102L, student11, lesson16, true);
@@ -180,9 +180,10 @@ public class ParticipationConfig {
                                 participation77,participation78,participation79,participation80,participation81,
                                 participation81,participation82,participation83,participation84,participation85,
                                 participation86,participation87 , participation88,participation89,participation90,
-                                participation91,participation92,participation93,participation94,participation95,
-                                participation96,participation97, participation98,participation99,participation100,
+                                participation91,participation100,
                                 participation101,participation102,participation103,participation104
+//                                participation92,participation93,participation94,participation95,
+//                                participation96,participation97, participation98,participation99,
                         ));
         };
 

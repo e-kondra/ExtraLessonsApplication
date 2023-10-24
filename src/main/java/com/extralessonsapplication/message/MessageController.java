@@ -114,7 +114,8 @@ public class MessageController {
     @GetMapping("/handleMessage/{id}")
     public String displayMessageForHandling(Model model,
                                             @PathVariable() Long id,
-                                            @CookieValue(name = "loggedInUserId", defaultValue = "null") String loggedInUserId){
+                                            @CookieValue(name = "loggedInUserId", defaultValue = "null") String loggedInUserId,
+                                            @CookieValue(name = "chosenSchoolId", defaultValue = "null") String chosenSchoolId){
         try {
             MessageEntity message = this.messageService.getMessageById(id);
             UserEntity user = this.userService.findUserById(Long.parseLong(loggedInUserId));
@@ -122,6 +123,9 @@ public class MessageController {
             model.addAttribute("isModerator", this.userService.isUserModerator(user));
             model.addAttribute("isTeacher", this.userService.isUserTeacher(user));
             model.addAttribute("isParent", this.userService.isUserParent(user));
+            if(!chosenSchoolId.equals("null")) {
+                model.addAttribute("chosenSchoolId", chosenSchoolId);
+            }
             return "handleMessage";
         } catch (Exception exception){
             return "redirect:/messagesListToUser?status=MESSAGES_LIST_FAILED " + exception.getMessage();
