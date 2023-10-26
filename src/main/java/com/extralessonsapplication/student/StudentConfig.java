@@ -17,7 +17,7 @@ public class StudentConfig {
 
             StudentEntity student1 = new StudentEntity(
                     1L,
-                    "Olga",
+                    "Helga",
                     "Vinogradova",
                     "122145-12542",
                     school1,

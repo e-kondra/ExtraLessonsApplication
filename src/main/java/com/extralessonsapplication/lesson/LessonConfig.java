@@ -193,6 +193,6 @@ public class LessonConfig {
                     List.of(lesson1, lesson2,lesson3,lesson4,lesson5,lesson6,lesson7,lesson101,lesson102,
                             lesson103,lesson104,lesson105,lesson106,lesson107,lesson108));
 
-    };
+    }
 
 }

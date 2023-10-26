@@ -20,9 +20,6 @@ public class StudentService {
         this.userService = userService;
     }
 
-//    public void createStudent(StudentEntity studentEntity) throws Exception{
-//        this.studentRepository.save(studentEntity);
-//    }
     public StudentEntity createStudent(StudentEntity studentEntity) throws Exception{
         return this.studentRepository.save(studentEntity);
     }
