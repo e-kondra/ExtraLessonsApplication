@@ -52,4 +52,6 @@ Ekaterina Kondratyeva (Frontend/Backend Developer), Olga Vinogradova (Frontend/B
     </table>
 
 <h3>DataBase Scheme:</h3>
+
+
 ![img_1.png](img_1.png)
